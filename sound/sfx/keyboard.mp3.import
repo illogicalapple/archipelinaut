@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/keyboard.mp3-454771cc33a36acaafcc504a4333293c.mp3str"
+
+[deps]
+
+source_file="res://sound/sfx/keyboard.mp3"
+dest_files=[ "res://.import/keyboard.mp3-454771cc33a36acaafcc504a4333293c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
