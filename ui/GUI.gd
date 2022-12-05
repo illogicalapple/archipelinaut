@@ -33,3 +33,4 @@ func _ready():
 
 func _process(delta):
 	typewriter(delta)
+	$Control/FPS.text = "fps: " + str(Engine.get_frames_per_second())

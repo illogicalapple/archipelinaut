@@ -76,3 +76,23 @@ volume_db = -0.5
 root_node = NodePath("../..")
 anims/RESET = SubResource( 4 )
 anims/fade_out = SubResource( 5 )
+
+[node name="FPS" type="Label" parent="Control"]
+margin_left = 80.0
+margin_top = 88.0
+margin_right = 188.0
+margin_bottom = 162.0
+text = "fps: 0"
+
+[node name="Popup" type="Popup" parent="Control"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -100.0
+
+[node name="ColorRect" type="ColorRect" parent="Control/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
