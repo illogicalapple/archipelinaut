@@ -47,6 +47,6 @@ texture = SubResource( 2 )
 offset = Vector2( 40, 40 )
 current = true
 
-[node name="GUI" parent="." instance=ExtResource( 2 )]
-
 [node name="Player" parent="." instance=ExtResource( 3 )]
+
+[node name="GUI" parent="." instance=ExtResource( 2 )]

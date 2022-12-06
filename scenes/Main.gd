@@ -12,6 +12,9 @@ const max_size = 150
 
 func island_gen(max_distance):
 	$Island.get_texture().noise.seed = game_seed
+	# var bitmap = BitMap.new()
+	# bitmap.create_from_image_alpha($Island.material)
+	# var polygons = bitmap.opaque_to_polygons(Rect2(Vector2(0, 0), bitmap.get_size()))
 
 func _ready():
 	randomize()

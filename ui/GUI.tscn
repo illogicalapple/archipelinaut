@@ -1,13 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://fonts/theme.tres" type="Theme" id=1]
-[ext_resource path="res://fonts/Inconsolata-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/header_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://ui/GUI.gd" type="Script" id=3]
 [ext_resource path="res://sound/sfx/keyboard.mp3" type="AudioStream" id=4]
-
-[sub_resource type="DynamicFont" id=3]
-size = 54
-font_data = ExtResource( 2 )
+[ext_resource path="res://ui/pause.svg" type="Texture" id=5]
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -40,10 +37,67 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.643137 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "pause"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.643137 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="GUI" type="CanvasLayer"]
+pause_mode = 2
 script = ExtResource( 3 )
 
 [node name="Control" type="Control" parent="."]
+pause_mode = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -52,20 +106,21 @@ theme = ExtResource( 1 )
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 80.0
-margin_top = -216.0
+margin_top = -221.0
 margin_right = 566.0
 margin_bottom = -80.0
 
 [node name="Outer" type="Label" parent="Control/Place"]
 margin_right = 486.0
-margin_bottom = 74.0
-text = "planet jikayoor"
+margin_bottom = 79.0
+text = "planet jikayoor
+"
 
 [node name="Inner" type="Label" parent="Control/Place"]
-margin_top = 78.0
+margin_top = 83.0
 margin_right = 486.0
-margin_bottom = 136.0
-custom_fonts/font = SubResource( 3 )
+margin_bottom = 141.0
+custom_fonts/font = ExtResource( 2 )
 text = "vodlinibinky ocean"
 
 [node name="SFX" type="AudioStreamPlayer" parent="Control/Place"]
@@ -85,7 +140,6 @@ margin_bottom = 162.0
 text = "fps: 0"
 
 [node name="Popup" type="Popup" parent="Control"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 100.0
@@ -96,3 +150,27 @@ margin_bottom = -100.0
 [node name="ColorRect" type="ColorRect" parent="Control/Popup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="Pause" type="ColorRect" parent="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.643137 )
+
+[node name="Icon" type="TextureRect" parent="Control/Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -68.9999
+margin_top = -74.0
+margin_right = 21.0001
+margin_bottom = 26.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Pause"]
+anims/RESET = SubResource( 6 )
+anims/pause = SubResource( 7 )
+
+[connection signal="animation_finished" from="Control/Pause/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
