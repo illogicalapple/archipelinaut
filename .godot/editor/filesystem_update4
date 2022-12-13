@@ -5,3 +5,5 @@ res://player/Player.tscn
 res://scenes/Main.gd
 res://ui/GUI.gd
 res://player/Player.gd
+res://sound/music/normal-v1.tres
+res://__test.tscn

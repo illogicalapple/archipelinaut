@@ -39,8 +39,8 @@ func _process(delta):
 func _input(event):
 	pause(event)
 
-func damage(amount: float, show_effect: bool = true):
+func damage(amount: float, _show_effect: bool = true):
 	health -= amount
 
-func _on_player_damage(amount, show_effect):
+func _on_player_damage(amount, _show_effect):
 	damage(amount)
