@@ -7,3 +7,5 @@ res://ui/GUI.gd
 res://player/Player.gd
 res://sound/music/normal-v1.tres
 res://__test.tscn
+res://island/trees.gdshader
+res://island/island.gdshader

@@ -9,13 +9,14 @@ const device_id: int = 0
 
 signal damage(amount: float, show_effect: bool)
 
-@onready var screen_size = get_viewport_rect().size
+@onready var screen_size: Vector2 = get_viewport_rect().size
+@onready var root: Node = get_parent().get_parent()
 
 @export var water_texture = Texture2D.new()
 @export var land_texture = Texture2D.new()
 
 func _ready():
-	in_water = not $Hurtbox.overlaps_area(get_parent().get_node("Island"))
+	in_water = not $Hurtbox.overlaps_area(root.get_node("Island"))
 	position += screen_size / 2
 	if in_water:
 		$Sprite.texture = water_texture

@@ -4,26 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://k5awmmktm8x8" path="res://ui/GUI.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://c08g4pan38n7l" path="res://player/Player.tscn" id="3"]
 [ext_resource type="AudioStream" uid="uid://ca0tm8jmph4b5" path="res://sound/music/normal-v1.wav" id="4_nlduu"]
-
-[sub_resource type="Shader" id="3"]
-code = "shader_type canvas_item;
-
-uniform float time;
-
-void fragment() {
-	if(texture(TEXTURE, UV).r - abs(0.5 - UV.x) * 2.0 - abs(0.5 - UV.y) * 2.0 < 0.15/* + sin(time * 30.0) / 5.0*/) {
-		COLOR = vec4(0, 0, 0, 0);
-	} else if(texture(TEXTURE, UV).r - abs(0.5 - UV.x) * 2.0 - abs(0.5 - UV.y) * 2.0 < 0.3) { // check brightness (it's gray so the red value will be the brightness)
-		COLOR = vec4(0.44, 0.75, 0.87, 1);
-	} else if(texture(TEXTURE, UV).r - abs(0.5 - UV.x) * 2.0 - abs(0.5 - UV.y) * 2.0 < 0.4) {
-		COLOR = vec4(1, 0.96, 0.7, 1);
-	} else {
-		COLOR = vec4(0.81, 0.88, 0.54, 1);
-	}
-}"
+[ext_resource type="Shader" path="res://island/island.gdshader" id="4_xumms"]
 
 [sub_resource type="ShaderMaterial" id="4"]
-shader = SubResource("3")
+shader = ExtResource("4_xumms")
 shader_parameter/time = null
 
 [sub_resource type="FastNoiseLite" id="1"]
@@ -51,7 +35,10 @@ collision_mask = 4
 [node name="Sprite2D" type="Sprite2D" parent="Island"]
 centered = false
 
-[node name="Player" parent="." instance=ExtResource("3")]
+[node name="Things" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Things" instance=ExtResource("3")]
 
 [node name="GUI" parent="." instance=ExtResource("2")]
 
@@ -67,9 +54,22 @@ material = SubResource("4")
 texture = SubResource("2")
 centered = false
 
+[node name="TreeGen" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+audio_listener_enable_2d = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 1
+
+[node name="Island" type="Sprite2D" parent="TreeGen"]
+material = SubResource("4")
+texture = SubResource("2")
+centered = false
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_nlduu")
 autoplay = true
 
-[connection signal="damage" from="Player" to="GUI" method="_on_player_damage"]
+[connection signal="damage" from="Things/Player" to="GUI" method="_on_player_damage"]
 [connection signal="ready" from="IslandGen" to="." method="_on_IslandGen_ready"]
+[connection signal="ready" from="TreeGen" to="." method="_on_tree_gen_ready"]

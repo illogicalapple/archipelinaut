@@ -5,13 +5,14 @@ var rng := RandomNumberGenerator.new()
 var screen_size := Vector2(0, 0)
 var game_seed: int
 var velocity = Vector2(0, 0)
-
+var tree_scene = load("res://objects/tree/tree.tscn")
 var device_id: int = 0
 
-@onready var player = $Player
+@onready var player = $Things/Player
 
 func island_gen():
 	$IslandGen/Island.get_texture().noise.seed = game_seed
+	$TreeGen/Island.get_texture().noise.seed = game_seed
 	# var bitmap = BitMap.new()
 	# bitmap.create_from_image_alpha($Island.material)
 	# var polygons = bitmap.opaque_to_polygons(Rect2(Vector2(0, 0), bitmap.get_size()))
@@ -38,3 +39,13 @@ func _on_IslandGen_ready():
 		collider.polygon = polygon
 		$Island.add_child(collider)
 	$IslandGen.queue_free()
+
+func _on_tree_gen_ready():
+	await RenderingServer.frame_post_draw
+	var img: Image = $TreeGen.get_texture().get_image()
+	var used_rect := img.get_used_rect().size
+	var tree_pos: Array = []
+	$TreeGen.queue_free()
+	for i in range(30):
+		tree_pos.append(Vector2(rng.randf_range(0, used_rect.x), rng.randf_range(0, used_rect.y)))
+		
