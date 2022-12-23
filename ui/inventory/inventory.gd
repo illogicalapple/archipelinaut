@@ -6,6 +6,7 @@ var item_holding = {
 	"type": "air",
 	"amount": 1
 }
+var id_moving = -1
 
 func slot(slot_id):
 	return get_node("Hotbar/Slot" + str(slot_id))

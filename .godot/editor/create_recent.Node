@@ -1,3 +1,8 @@
+Timer
+Polygon2D
+CollisionShape2D
+Sprite2D
+Area2D
 HSeparator
 GridContainer
 Control
@@ -8,16 +13,11 @@ TextureRect
 Label
 TextureButton
 Button
-CollisionShape2D
-Area2D
-Sprite2D
 CenterContainer
-Timer
 CollisionPolygon2D
 AnimationPlayer
 AnimationTree
 StaticBody2D
-Polygon2D
 Node2D
 AudioStreamPlayer
 ProgressBar

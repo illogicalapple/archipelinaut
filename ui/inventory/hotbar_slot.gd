@@ -5,7 +5,7 @@ extends TextureButton
 @export var hotbar_item = false
 
 var active: bool = false: set = set_active
-var item_moving: bool = false
+var item_moving: bool = false : set = set_item_moving
 
 @onready var inventory := get_parent().get_parent()
 
@@ -24,16 +24,7 @@ func set_active(new_active):
 
 func _on_pressed():
 	if inventory.inventory_open:
-		if inventory.item_holding.type == "air":
-			inventory.item_holding = global.inventory[id]
-			global.inventory[id] = global.air
-		else:
-			var slot_item = global.inventory[id]
-			var old_holding = inventory.item_holding
-			if slot_item.type != "air":
-				inventory.item_holding = slot_item
-				item_moving = true
-			global.inventory[id] = old_holding
+		pass
 	elif hotbar_item:
 		inventory.active_id = id
 
@@ -49,5 +40,7 @@ func _process(_delta):
 		else:
 			$Amount.show()
 			$Amount.text = str(global.inventory[id].amount)
-	else:
-		$TextureRect.position = get_local_mouse_position()
+
+func set_item_moving(new_item_moving):
+	if new_item_moving: inventory.id_moving = id
+	item_moving = new_item_moving

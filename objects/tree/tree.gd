@@ -27,5 +27,6 @@ func _input(event):
 		$Health.hide()
 
 func _on_chop_timer_timeout():
+	global.drop("log", randi_range(1, 3), position)
 	# other stuff (send signal, probably)
 	queue_free() # DIE YOU DUMB USELESS TREE

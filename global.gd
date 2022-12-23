@@ -1,5 +1,6 @@
 extends Node
 
+var item_scene = preload("objects/item.tscn")
 var air = {
 	"type": "air",
 	"amount": 1
@@ -33,3 +34,10 @@ func pick_up(item, amount):
 func _unhandled_input(event):
 	if event.is_action_pressed("inventory_0"):
 		pick_up("test", 1)
+
+func drop(item, amount, pos):
+	var item_instance = item_scene.instantiate()
+	item_instance.item = item
+	item_instance.amount = amount
+	item_instance.position = pos
+	get_tree().get_root().get_node("Root/Things").add_child(item_instance)
