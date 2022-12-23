@@ -1,10 +1,25 @@
-[gd_scene load_steps=11 format=3 uid="uid://k5awmmktm8x8"]
+[gd_scene load_steps=12 format=3 uid="uid://brf8k5pgguil7"]
 
 [ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://fonts/theme.tres" id="1"]
 [ext_resource type="Script" path="res://ui/GUI.gd" id="3"]
 [ext_resource type="FontFile" uid="uid://bepjl3k46ose5" path="res://fonts/Inconsolata-Bold.ttf" id="3_molnl"]
 [ext_resource type="AudioStream" uid="uid://vw0u5l5wye2k" path="res://sound/sfx/keyboard.mp3" id="4"]
 [ext_resource type="Texture2D" uid="uid://cwbi0eemx1rka" path="res://ui/pause.svg" id="5"]
+[ext_resource type="PackedScene" uid="uid://b0a3smths6tlk" path="res://ui/inventory/inventory.tscn" id="5_7vef1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fscbm"]
+bg_color = Color(0.756863, 0.756863, 0.756863, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mawai"]
+bg_color = Color(0.584314, 0.898039, 0.533333, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="Animation" id="6"]
 length = 0.001
@@ -67,20 +82,6 @@ _data = {
 "pause": SubResource("7")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fscbm"]
-bg_color = Color(0.756863, 0.756863, 0.756863, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mawai"]
-bg_color = Color(0.584314, 0.898039, 0.533333, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
 [node name="GUI" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("3")
@@ -93,6 +94,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 1
 theme = ExtResource("1")
 
 [node name="Place" type="VBoxContainer" parent="Control"]
@@ -124,13 +126,6 @@ text = "unnamed island (base camp)"
 stream = ExtResource("4")
 volume_db = -0.5
 
-[node name="FPS" type="Label" parent="Control"]
-offset_left = 80.0
-offset_top = 88.0
-offset_right = 188.0
-offset_bottom = 162.0
-text = "fps: 0"
-
 [node name="Popup" type="Popup" parent="Control"]
 
 [node name="ColorRect" type="ColorRect" parent="Control/Popup"]
@@ -139,6 +134,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HealthBar" type="ProgressBar" parent="Control"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -549.0
+offset_top = -90.0
+offset_right = -80.0
+offset_bottom = -80.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_fscbm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mawai")
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="Inventory" parent="Control" instance=ExtResource("5_7vef1")]
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 615.0
+offset_bottom = 155.0
 
 [node name="Pause" type="ColorRect" parent="Control"]
 process_mode = 2
@@ -169,23 +188,5 @@ process_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_1i7k8")
 }
-
-[node name="HealthBar" type="ProgressBar" parent="Control"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -549.0
-offset_top = -90.0
-offset_right = -80.0
-offset_bottom = -80.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_styles/background = SubResource("StyleBoxFlat_fscbm")
-theme_override_styles/fill = SubResource("StyleBoxFlat_mawai")
-value = 100.0
-rounded = true
-show_percentage = false
 
 [connection signal="animation_finished" from="Control/Pause/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

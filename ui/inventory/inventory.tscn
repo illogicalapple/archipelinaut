@@ -1,0 +1,113 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0a3smths6tlk"]
+
+[ext_resource type="Script" path="res://ui/inventory/inventory.gd" id="1_udjei"]
+[ext_resource type="PackedScene" uid="uid://c3sk6lwmmxpa" path="res://ui/inventory/hotbar_slot.tscn" id="2_vuq42"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7u3vl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Inventory" type="VBoxContainer"]
+layout_direction = 2
+offset_right = 535.0
+offset_bottom = 75.0
+theme_override_constants/separation = 40
+script = ExtResource("1_udjei")
+
+[node name="Hotbar" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Slot0" parent="Hotbar" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+hotbar_item = true
+
+[node name="Slot1" parent="Hotbar" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 1
+hotbar_item = true
+
+[node name="Slot2" parent="Hotbar" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 2
+hotbar_item = true
+
+[node name="Slot3" parent="Hotbar" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 3
+hotbar_item = true
+
+[node name="Slot4" parent="Hotbar" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 4
+hotbar_item = true
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_7u3vl")
+
+[node name="Inventory" type="GridContainer" parent="."]
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 20
+columns = 5
+
+[node name="Slot5" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 5
+
+[node name="Slot6" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 6
+
+[node name="Slot7" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 7
+
+[node name="Slot8" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 8
+
+[node name="Slot9" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 9
+
+[node name="Slot10" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 10
+
+[node name="Slot11" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 11
+
+[node name="Slot12" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 12
+
+[node name="Slot13" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 13
+
+[node name="Slot14" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 14
+
+[node name="Slot15" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 15
+
+[node name="Slot16" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 16
+
+[node name="Slot17" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 17
+
+[node name="Slot18" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 18
+
+[node name="Slot19" parent="Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+id = 19

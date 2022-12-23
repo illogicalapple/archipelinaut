@@ -1,7 +1,10 @@
-res://objects/tree
-res://island
 res://
+res://ui
+res://ui/inventory
+res://textures/items
+res://player/hands
+res://island
+res://objects/tree
 res://player
 res://sound/music
-res://ui
 res://fonts

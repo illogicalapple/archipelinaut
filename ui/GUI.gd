@@ -27,14 +27,11 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 func _ready():
 	print("bop")
 	$Control/Pause.hide()
-	pass
 
 func _process(delta):
 	health += delta / 5
 	health = clamp(health, 0, 100)
 	$Control/HealthBar.value = health
-	if not paused:
-		$Control/FPS.text = "fps: " + str(Engine.get_frames_per_second())
 
 func _input(event):
 	pause(event)

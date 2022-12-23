@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://m3xm8lo304ey"]
+[gd_scene load_steps=11 format=3 uid="uid://m3xm8lo304ey"]
 
 [ext_resource type="Script" path="res://scenes/Main.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://k5awmmktm8x8" path="res://ui/GUI.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://brf8k5pgguil7" path="res://ui/GUI.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://c08g4pan38n7l" path="res://player/Player.tscn" id="3"]
 [ext_resource type="AudioStream" uid="uid://ca0tm8jmph4b5" path="res://sound/music/normal-v1.wav" id="4_nlduu"]
+[ext_resource type="Shader" path="res://island/trees.gdshader" id="4_qgfye"]
 [ext_resource type="Shader" path="res://island/island.gdshader" id="4_xumms"]
 
 [sub_resource type="ShaderMaterial" id="4"]
@@ -21,6 +22,10 @@ fractal_gain = 0.1
 width = 1920
 height = 1080
 noise = SubResource("1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5ynk"]
+shader = ExtResource("4_qgfye")
+shader_parameter/time = null
 
 [node name="Root" type="Node"]
 script = ExtResource("1")
@@ -62,7 +67,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 1
 
 [node name="Island" type="Sprite2D" parent="TreeGen"]
-material = SubResource("4")
+material = SubResource("ShaderMaterial_k5ynk")
 texture = SubResource("2")
 centered = false
 

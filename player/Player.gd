@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 # var velocity := Vector2(0, 0)
 var in_water: bool = false
-var breath_left = 20
-var dps = 0
+var breath_left: float = 20
+var dps: float = 0
+var mining_ability: float = 1
 
 const device_id: int = 0
 
@@ -25,8 +26,8 @@ func _ready():
 		$Stamina.hide()
 
 func _process(delta):
-	velocity += Vector2(int(Input.is_action_pressed("move_right_" + str(device_id))) - int(Input.is_action_pressed("move_left_" + str(device_id))), int(Input.is_action_pressed("move_down_" + str(device_id))) - int(Input.is_action_pressed("move_up_" + str(device_id)))).normalized()
-	velocity = velocity.lerp(Vector2(0, 0), delta * 4 * (int(in_water) * 2 + 1))
+	velocity += Vector2(int(Input.is_action_pressed("move_right_" + str(device_id))) - int(Input.is_action_pressed("move_left_" + str(device_id))), int(Input.is_action_pressed("move_down_" + str(device_id))) - int(Input.is_action_pressed("move_up_" + str(device_id)))).normalized() * delta * 50
+	velocity = velocity.lerp(Vector2(0, 0), delta * 4 * (int(in_water) * 3 + 1))
 	position += velocity * delta / 0.02
 	if in_water:
 		breath_left -= delta
@@ -51,4 +52,4 @@ func _on_Hurtbox_area_exited(area):
 		in_water = true
 
 func _on_dps_timeout():
-	emit_signal("damage", dps / 2, true)
+	emit_signal("damage", dps / 2.0, true)
