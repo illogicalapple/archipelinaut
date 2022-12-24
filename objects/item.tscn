@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://objects/item.gd" id="1_hpqwf"]
 [ext_resource type="Texture2D" uid="uid://bn5oh0rc7gsj7" path="res://textures/items/log.svg" id="2_4cki5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig8xv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1y8ub"]
 size = Vector2(32, 32)
 
 [node name="Item" type="Area2D"]
@@ -15,7 +15,7 @@ script = ExtResource("1_hpqwf")
 texture = ExtResource("2_4cki5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ig8xv")
+shape = SubResource("RectangleShape2D_1y8ub")
 
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 300.0

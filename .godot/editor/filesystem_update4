@@ -6,9 +6,5 @@ res://objects/tree/tree.tscn
 res://ui/inventory/hotbar_slot.tscn
 res://ui/GUI.tscn
 res://ui/inventory/inventory.tscn
-res://ui/inventory/hotbar_slot.gd
-res://ui/inventory/inventory.gd
 res://objects/item.tscn
-res://objects/item.gd
-res://global.gd
-res://objects/tree/tree.gd
+res://ui/inventory/hotbar_slot.gd

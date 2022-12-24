@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cwhq3ithpsfhm"
+
+[deps]
+
+files=["res://textures/items/lastpass_export.username.translation", "res://textures/items/lastpass_export.password.translation", "res://textures/items/lastpass_export.totp.translation", "res://textures/items/lastpass_export.extra.translation", "res://textures/items/lastpass_export.name.translation", "res://textures/items/lastpass_export.grouping.translation", "res://textures/items/lastpass_export.fav.translation"]
+
+source_file="res://textures/items/lastpass_export.csv"
+dest_files=["res://textures/items/lastpass_export.username.translation", "res://textures/items/lastpass_export.password.translation", "res://textures/items/lastpass_export.totp.translation", "res://textures/items/lastpass_export.extra.translation", "res://textures/items/lastpass_export.name.translation", "res://textures/items/lastpass_export.grouping.translation", "res://textures/items/lastpass_export.fav.translation"]
+
+[params]
+
+compress=true
+delimiter=0

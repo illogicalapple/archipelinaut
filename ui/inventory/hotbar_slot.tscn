@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3sk6lwmmxpa"]
+[gd_scene load_steps=7 format=3 uid="uid://c3sk6lwmmxpa"]
 
 [ext_resource type="Texture2D" uid="uid://cb0roq0qd2ve3" path="res://ui/inventory/hotbar_square.svg" id="1_ltmi5"]
 [ext_resource type="Script" path="res://ui/inventory/hotbar_slot.gd" id="2_hfkkw"]
 [ext_resource type="Texture2D" uid="uid://djecqkcud0b4s" path="res://textures/items/air.svg" id="3_07rl8"]
 [ext_resource type="Texture2D" uid="uid://dh2yt4tepgk4d" path="res://ui/inventory/selected.svg" id="4_xayrr"]
+[ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://fonts/theme.tres" id="5_vgdr1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8x3v"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0.705882, 0.878431, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="HotbarSlot" type="TextureButton"]
 keep_pressed_outside = true
@@ -47,4 +56,23 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("4_xayrr")
 
+[node name="About" type="Panel" parent="."]
+visible = false
+offset_left = 116.0
+offset_top = 73.0
+offset_right = 254.0
+offset_bottom = 137.0
+theme = ExtResource("5_vgdr1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_l8x3v")
+
+[node name="Name" type="Label" parent="About"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 16
+text = "log"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
