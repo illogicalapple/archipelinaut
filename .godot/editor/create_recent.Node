@@ -1,3 +1,5 @@
+Node2D
+Node
 Label
 Panel
 Control
@@ -19,7 +21,6 @@ CollisionPolygon2D
 AnimationPlayer
 AnimationTree
 StaticBody2D
-Node2D
 AudioStreamPlayer
 ProgressBar
 TextureProgressBar

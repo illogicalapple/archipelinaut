@@ -34,22 +34,13 @@ func _ready():
 
 func _process(_delta):
 	item = global.inventory[id].type
-	$About/Name.text = global.inventory[id].type
 	if not item_moving:
 		if global.inventory[id].type == "air":
 			$Amount.hide()
 		else:
 			$Amount.show()
 			$Amount.text = str(global.inventory[id].amount)
-	if $About.visible:
-		$About.position = get_local_mouse_position()
 
 func set_item_moving(new_item_moving):
 	if new_item_moving: inventory.id_moving = id
 	item_moving = new_item_moving
-
-func _on_mouse_entered():
-	if not item == "air": $About.show()
-
-func _on_mouse_exited():
-	$About.hide()

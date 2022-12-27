@@ -3,7 +3,7 @@ extends Area2D
 @export var item = "log"
 @export var amount = 1
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	if global.pick_up(item, amount):
 		queue_free()
 

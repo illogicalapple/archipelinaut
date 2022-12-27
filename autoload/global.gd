@@ -1,6 +1,6 @@
 extends Node
 
-var item_scene = preload("objects/item.tscn")
+var item_scene = preload("../objects/item.tscn")
 var air = {
 	"type": "air",
 	"amount": 1

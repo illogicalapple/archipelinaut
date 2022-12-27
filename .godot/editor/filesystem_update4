@@ -8,3 +8,10 @@ res://ui/GUI.tscn
 res://ui/inventory/inventory.tscn
 res://objects/item.tscn
 res://ui/inventory/hotbar_slot.gd
+res://objects/item.gd
+res://global.gd
+res://autoload/global.gd
+res://autoload/poisson.gd
+res://ui/GUI.gd
+res://scenes/poisson_TESTING.tscn
+res://scenes/poisson_TESTING.gd

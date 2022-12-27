@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var elapsed_time: float = 0
+var elapsead_time: float = 0
 var outer_done: bool = false
 var anim_done: bool = false
 var characters: int = 0
