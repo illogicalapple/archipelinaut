@@ -17,7 +17,7 @@ signal damage(amount: float, show_effect: bool)
 @export var land_texture = Texture2D.new()
 
 func _ready():
-	in_water = not $Hurtbox.overlaps_area(root.get_node("Island"))
+	in_water = not $Hurtbox.overlaps_area(root.get_node("Islands/Island"))
 	position += screen_size / 2
 	if in_water:
 		$Sprite.texture = water_texture
@@ -38,13 +38,13 @@ func _process(delta):
 		dps = 0
 
 func _on_Hurtbox_area_entered(area):
-	if area.name == "Island":
+	if area.name.contains("Island"):
 		$Stamina.hide()
 		$Sprite.texture = land_texture
 		in_water = false
 
 func _on_Hurtbox_area_exited(area):
-	if area.name == "Island":
+	if area.name.contains("Island"):
 		$Stamina.show()
 		$Stamina.value = 100
 		$Sprite.texture = water_texture
@@ -53,3 +53,7 @@ func _on_Hurtbox_area_exited(area):
 
 func _on_dps_timeout():
 	emit_signal("damage", dps / 2.0, true)
+
+func _input(event): # DEBUG
+	if event.is_action_pressed("hotbar_4"):
+		_on_Hurtbox_area_entered(root.get_node("Islands/Island"))

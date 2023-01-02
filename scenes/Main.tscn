@@ -1,44 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://m3xm8lo304ey"]
+[gd_scene load_steps=5 format=3 uid="uid://m3xm8lo304ey"]
 
 [ext_resource type="Script" path="res://scenes/Main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://brf8k5pgguil7" path="res://ui/GUI.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://c08g4pan38n7l" path="res://player/Player.tscn" id="3"]
 [ext_resource type="AudioStream" uid="uid://ca0tm8jmph4b5" path="res://sound/music/normal-v1.wav" id="4_nlduu"]
-[ext_resource type="Shader" path="res://island/trees.gdshader" id="4_qgfye"]
-[ext_resource type="Shader" path="res://island/island.gdshader" id="4_xumms"]
-
-[sub_resource type="ShaderMaterial" id="4"]
-shader = ExtResource("4_xumms")
-shader_parameter/time = null
-
-[sub_resource type="FastNoiseLite" id="1"]
-seed = 7
-frequency = 0.003
-fractal_octaves = 10
-fractal_lacunarity = 0.1
-fractal_gain = 0.1
-
-[sub_resource type="NoiseTexture2D" id="2"]
-width = 1920
-height = 1080
-noise = SubResource("1")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5ynk"]
-shader = ExtResource("4_qgfye")
-shader_parameter/time = null
 
 [node name="Root" type="Node"]
+process_priority = 100
 script = ExtResource("1")
 
 [node name="Camera" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
 
-[node name="Island" type="Area2D" parent="."]
-collision_mask = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="Island"]
-centered = false
+[node name="Islands" type="Node2D" parent="."]
 
 [node name="Things" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -47,34 +22,8 @@ y_sort_enabled = true
 
 [node name="GUI" parent="." instance=ExtResource("2")]
 
-[node name="IslandGen" type="SubViewport" parent="."]
-disable_3d = true
-transparent_bg = true
-audio_listener_enable_2d = true
-size = Vector2i(1920, 1080)
-render_target_update_mode = 1
-
-[node name="Island" type="Sprite2D" parent="IslandGen"]
-material = SubResource("4")
-texture = SubResource("2")
-centered = false
-
-[node name="TreeGen" type="SubViewport" parent="."]
-disable_3d = true
-transparent_bg = true
-audio_listener_enable_2d = true
-size = Vector2i(1920, 1080)
-render_target_update_mode = 1
-
-[node name="Island" type="Sprite2D" parent="TreeGen"]
-material = SubResource("ShaderMaterial_k5ynk")
-texture = SubResource("2")
-centered = false
-
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_nlduu")
 autoplay = true
 
 [connection signal="damage" from="Things/Player" to="GUI" method="_on_player_damage"]
-[connection signal="ready" from="IslandGen" to="." method="_on_IslandGen_ready"]
-[connection signal="ready" from="TreeGen" to="." method="_on_tree_gen_ready"]

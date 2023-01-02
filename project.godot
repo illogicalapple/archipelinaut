@@ -121,6 +121,7 @@ hotbar_4={
 2d_physics/layer_3="PlayerHurtbox"
 2d_physics/layer_4="DestructibleObject"
 2d_physics/layer_5="Collectible"
+2d_physics/layer_6="Boat"
 
 [physics]
 

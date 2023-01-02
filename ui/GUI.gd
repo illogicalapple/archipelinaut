@@ -1,13 +1,8 @@
 extends CanvasLayer
 
-var elapsead_time: float = 0
-var outer_done: bool = false
-var anim_done: bool = false
-var characters: int = 0
 var paused: bool = false
-var settings_screen: int = 0
-var settings_id = 5
 var health = 100
+var loading_progress: float = 0: set = set_loading_progress
 
 func pause(event: InputEvent):
 	if event.is_action_pressed("ui_pause"):
@@ -25,13 +20,14 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 		$Control/Pause.hide()
 
 func _ready():
+	var hints = $Control/Loading/Hint.get_meta("hints")
 	print("bop")
 	$Control/Pause.hide()
+	$Control/Loading/Hint.text = hints[randi_range(0, len(hints) - 1)]
 
 func _process(delta):
 	health += delta / 5
 	health = clamp(health, 0, 100)
-	$Control/HealthBar.value = health
 
 func _input(event):
 	pause(event)
@@ -41,3 +37,9 @@ func damage(amount: float, _show_effect: bool = true):
 
 func _on_player_damage(amount, _show_effect):
 	damage(amount)
+
+func set_loading_progress(new_progress):
+	loading_progress = new_progress
+	$Control/Loading/VBoxContainer/ProgressBar.value = new_progress
+	if new_progress >= 99:
+		$Control/Loading.hide()

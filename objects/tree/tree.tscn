@@ -24,15 +24,18 @@ position = Vector2(0, -56)
 texture = ExtResource("1_eb0fj")
 
 [node name="TrunkCollisions" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -48)
 shape = SubResource("CapsuleShape2D_yx2bc")
 
 [node name="LeafCollisions0" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -96)
 rotation = 1.0472
 shape = SubResource("CapsuleShape2D_mue1b")
 
 [node name="LeafCollisions1" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -96)
 rotation = -1.0472
 shape = SubResource("CapsuleShape2D_mue1b")

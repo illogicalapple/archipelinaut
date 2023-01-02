@@ -1,22 +1,32 @@
 extends Node
 
-var island := []
+var island: PackedScene = load("res://island/island.tscn")
 var rng := RandomNumberGenerator.new()
 var screen_size := Vector2(0, 0)
 var game_seed: int
 var velocity = Vector2(0, 0)
-var tree_scene: PackedScene = load("res://objects/tree/tree.tscn")
 var device_id: int = 0
 var cursor = load("cursor.svg")
+var island_gen_done: bool = false
+var chunk_size: Vector2 = Vector2(1500, 1500) # must be square
 
 @onready var player = $Things/Player
 
-func island_gen():
-	$IslandGen/Island.get_texture().noise.seed = game_seed
-	$TreeGen/Island.get_texture().noise.seed = game_seed
-	# var bitmap = BitMap.new()
-	# bitmap.create_from_image_alpha($Island.material)
-	# var polygons = bitmap.opaque_to_polygons(Rect2(Vector2(0, 0), bitmap.get_size()))
+func to_vector2(x: int, y: int):
+	return Vector2(x, y) * (chunk_size.x + 750)
+
+func chunk_at(offset: Vector2, weight: float = 100.0):
+	var points = poisson.generate(500, chunk_size, rng, true, 30)
+	var index = 1
+	island_gen_done = true
+	for point in points:
+		var island_instance = island.instantiate()
+		island_instance.position = (point - screen_size / 2) * 10 + offset
+		$Islands.add_child(island_instance)
+		island_instance.island_gen(0)
+		await island_instance.generated
+		$GUI.loading_progress += weight / float(len(points) - 1)
+		index += 1
 
 func get_polygon_area(polygon):
 	var size = polygon.size()
@@ -31,48 +41,12 @@ func _ready():
 	randomize()
 	game_seed = randi() # change to a seed setting later
 	screen_size = get_viewport().get_visible_rect().size
-	island_gen()
 
 func _process(delta):
+	if not island_gen_done:
+		await chunk_at(Vector2.ZERO, 20)
+		await chunk_at(to_vector2(1, 0), 20)
+		await chunk_at(to_vector2(-1, 0), 20)
+		await chunk_at(to_vector2(0, 1), 20)
+		await chunk_at(to_vector2(0, -1), 20)
 	$Camera.position = $Camera.position.lerp(player.position - screen_size / 2, delta * 8)
-
-func _on_IslandGen_ready():
-	await RenderingServer.frame_post_draw
-	var img = $IslandGen.get_texture().get_image()
-	var island_texture = ImageTexture.create_from_image(img)
-	var bitmap = BitMap.new()
-	bitmap.create_from_image_alpha(img)
-	var polygons = bitmap.opaque_to_polygons(Rect2(Vector2(0, 0), bitmap.get_size()))
-	$Island/Sprite2D.texture = island_texture
-	for polygon in polygons:
-		var collider = CollisionPolygon2D.new()
-		collider.polygon = polygon
-		$Island.add_child(collider)
-	$IslandGen.queue_free()
-
-func _on_tree_gen_ready():
-	await RenderingServer.frame_post_draw
-	var img: Image = $TreeGen.get_texture().get_image()
-	var bitmap = BitMap.new()
-	var positions = []
-	bitmap.create_from_image_alpha(img)
-	var polygons = bitmap.opaque_to_polygons(Rect2(Vector2(0, 0), bitmap.get_size()))
-	for polygon in polygons:
-		var polygon_shape = ConcavePolygonShape2D.new()
-		polygon_shape.segments = polygon
-		var rect = polygon_shape.get_rect()
-		var size = rect.size
-		var pos = rect.position
-		var found = 0.0
-		while(found < round(((size.x + size.y) / 200) * 7)):
-			var candidate = Vector2(rng.randf_range(0, size.x), rng.randf_range(0, size.y)) + pos
-			if Geometry2D.is_point_in_polygon(candidate, polygon):
-				positions.append(candidate)
-				found += 1
-	print(len(positions))
-	for i in range(min(rng.randi_range(4, 6), len(positions))):
-		var tree_instance = tree_scene.instantiate()
-		var rand_index = rng.randi_range(0, len(positions) - 1)
-		tree_instance.position = positions[rand_index]
-		positions.remove_at(rand_index)
-		$Things.add_child(tree_instance)

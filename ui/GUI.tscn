@@ -7,20 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cwbi0eemx1rka" path="res://ui/pause.svg" id="5"]
 [ext_resource type="PackedScene" uid="uid://b0a3smths6tlk" path="res://ui/inventory/inventory.tscn" id="5_7vef1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fscbm"]
-bg_color = Color(0.756863, 0.756863, 0.756863, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mawai"]
-bg_color = Color(0.584314, 0.898039, 0.533333, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
 [sub_resource type="Animation" id="6"]
 length = 0.001
 tracks/0/type = "value"
@@ -82,6 +68,20 @@ _data = {
 "pause": SubResource("7")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wa4so"]
+bg_color = Color(0.235294, 0.501961, 0.6, 1)
+corner_radius_top_left = 56
+corner_radius_top_right = 56
+corner_radius_bottom_right = 56
+corner_radius_bottom_left = 56
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsf5b"]
+bg_color = Color(0.12549, 0.301961, 0.368627, 1)
+corner_radius_top_left = 56
+corner_radius_top_right = 56
+corner_radius_bottom_right = 56
+corner_radius_bottom_left = 56
+
 [node name="GUI" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("3")
@@ -102,8 +102,8 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 80.0
-offset_top = -167.0
-offset_right = 566.0
+offset_top = -229.0
+offset_right = 808.0
 offset_bottom = -80.0
 grow_vertical = 0
 
@@ -134,24 +134,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="HealthBar" type="ProgressBar" parent="Control"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -549.0
-offset_top = -90.0
-offset_right = -80.0
-offset_bottom = -80.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_styles/background = SubResource("StyleBoxFlat_fscbm")
-theme_override_styles/fill = SubResource("StyleBoxFlat_mawai")
-value = 100.0
-rounded = true
-show_percentage = false
 
 [node name="Inventory" parent="Control" instance=ExtResource("5_7vef1")]
 offset_left = 80.0
@@ -188,5 +170,55 @@ process_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_1i7k8")
 }
+
+[node name="Loading" type="ColorRect" parent="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.396078, 0.705882, 0.827451, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Loading"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -31.5
+offset_right = 140.0
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/Loading/VBoxContainer"]
+offset_right = 280.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 28
+theme_override_fonts/font = ExtResource("3_molnl")
+theme_override_font_sizes/font_size = 56
+text = "loading..."
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/Loading/VBoxContainer"]
+offset_top = 92.0
+offset_right = 280.0
+offset_bottom = 130.0
+theme_override_styles/background = SubResource("StyleBoxFlat_wa4so")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xsf5b")
+
+[node name="Hint" type="Label" parent="Control/Loading"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -121.0
+offset_right = 368.0
+offset_bottom = -80.0
+grow_vertical = 0
+text = "HINT HINT HINT HINT"
+metadata/hints = PackedStringArray("this game was made by a monkey", "[insert \"helpful\" hint here]", "break trees and stuff", "is there hidden text?", "make a magma portal!", "this hint has 27 characters", "planet jikayoor!", "don\'t die!")
 
 [connection signal="animation_finished" from="Control/Pause/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

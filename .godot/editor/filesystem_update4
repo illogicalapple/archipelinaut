@@ -15,3 +15,11 @@ res://autoload/poisson.gd
 res://ui/GUI.gd
 res://scenes/poisson_TESTING.tscn
 res://scenes/poisson_TESTING.gd
+res://island/island.gd
+res://scenes/Main.gd
+res://island/island.tscn
+res://player/Player.gd
+res://island/island.gdshader
+res://objects/tree/tree.gd
+res://objects/raft/raft.tscn
+res://objects/raft/raft.gd
