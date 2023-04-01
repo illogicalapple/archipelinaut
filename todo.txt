@@ -1,0 +1,10 @@
+priority 1: (essensial parts of the game)
+	enemy ai
+	crafting
+
+priority 2: (make things look nice)
+	more special effects
+	biomes
+
+priority 3: (stuff that really bugs me but isn't important)
+	island borders :(

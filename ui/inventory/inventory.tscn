@@ -1,0 +1,148 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0a3smths6tlk"]
+
+[ext_resource type="Script" path="res://ui/inventory/inventory.gd" id="1_udjei"]
+[ext_resource type="PackedScene" uid="uid://c3sk6lwmmxpa" path="res://ui/inventory/hotbar_slot.tscn" id="2_vuq42"]
+[ext_resource type="PackedScene" uid="uid://sr7dr66ccdkr" path="res://ui/inventory/crafting.tscn" id="3_y2ve1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7u3vl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Inventory" type="VBoxContainer"]
+layout_direction = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -424.0
+offset_right = 535.0
+grow_vertical = 0
+theme_override_constants/separation = 40
+alignment = 2
+script = ExtResource("1_udjei")
+
+[node name="Top" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Inventory" type="GridContainer" parent="Top"]
+layout_mode = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 20
+columns = 5
+
+[node name="Slot5" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 5
+
+[node name="Slot6" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 6
+
+[node name="Slot7" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 7
+
+[node name="Slot8" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 8
+
+[node name="Slot9" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 9
+
+[node name="Slot10" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 10
+
+[node name="Slot11" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 11
+
+[node name="Slot12" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 12
+
+[node name="Slot13" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 13
+
+[node name="Slot14" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 14
+
+[node name="Slot15" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 15
+
+[node name="Slot16" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 16
+
+[node name="Slot17" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 17
+
+[node name="Slot18" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 18
+
+[node name="Slot19" parent="Top/Inventory" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../../..")
+id = 19
+
+[node name="Crafting" parent="Top" instance=ExtResource("3_y2ve1")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_7u3vl")
+
+[node name="Hotbar" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 40
+metadata/inventory = NodePath("..")
+
+[node name="Slot0" parent="Hotbar" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../..")
+hotbar_item = true
+
+[node name="Slot1" parent="Hotbar" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../..")
+id = 1
+hotbar_item = true
+
+[node name="Slot2" parent="Hotbar" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../..")
+id = 2
+hotbar_item = true
+
+[node name="Slot3" parent="Hotbar" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../..")
+id = 3
+hotbar_item = true
+
+[node name="Slot4" parent="Hotbar" instance=ExtResource("2_vuq42")]
+layout_mode = 2
+inventory_path = NodePath("../..")
+id = 4
+hotbar_item = true

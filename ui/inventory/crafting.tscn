@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://sr7dr66ccdkr"]
+
+[ext_resource type="Script" path="res://ui/inventory/crafting.gd" id="1_wh6xw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu3n1"]
+content_margin_left = 2.0
+bg_color = Color(0, 0, 0, 0.156863)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4px0v"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnawg"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gel4g"]
+color = Color(0, 0, 0, 0.156863)
+thickness = 5
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1kowr"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="Theme" id="Theme_nl3dj"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_yu3n1")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_4px0v")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_dnawg")
+VScrollBar/styles/scroll = SubResource("StyleBoxLine_gel4g")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_1kowr")
+
+[node name="Crafting" type="ScrollContainer"]
+offset_right = 83.0
+offset_bottom = 267.0
+theme = SubResource("Theme_nl3dj")
+horizontal_scroll_mode = 0
+script = ExtResource("1_wh6xw")
+
+[node name="UpdateTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Recipes" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[connection signal="timeout" from="UpdateTimer" to="." method="_on_update_timer_timeout"]

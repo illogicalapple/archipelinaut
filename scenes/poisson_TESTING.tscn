@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://8ykoobxh7vm1"]
+
+[ext_resource type="Script" path="res://scenes/poisson_TESTING.gd" id="1_e06ms"]
+
+[node name="Root" type="Node"]
+script = ExtResource("1_e06ms")
+
+[node name="Things" type="Node2D" parent="."]

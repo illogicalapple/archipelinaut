@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bekwad7n7w77a"]
+
+[ext_resource type="Texture2D" uid="uid://cnr8gwts6c7rx" path="res://mobs/pirate/peerate.png" id="1_55qot"]
+[ext_resource type="Script" path="res://mobs/pirate/peerate.gd" id="1_ekv83"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f3kn1"]
+radius = 16.0
+height = 53.0
+
+[node name="Peerate" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_ekv83")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+texture = ExtResource("1_55qot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -27.5)
+shape = SubResource("CapsuleShape2D_f3kn1")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -27.5)
+shape = SubResource("CapsuleShape2D_f3kn1")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

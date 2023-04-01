@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwvs8dq66g5t3"]
+
+[ext_resource type="Script" path="res://mobs/crab/crab.gd" id="1_3s7yi"]
+[ext_resource type="Texture2D" uid="uid://dv6nquylo0p76" path="res://mobs/crab/CRAB!.svg" id="1_rkp3v"]
+[ext_resource type="Texture2D" uid="uid://snja7ywnn4rg" path="res://mobs/heart.svg" id="2_mcin1"]
+[ext_resource type="Texture2D" uid="uid://blrnxvsny2ufp" path="res://mobs/crab/crab-shadow.svg" id="2_pl501"]
+[ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://fonts/theme.tres" id="2_smjsg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_08e6u"]
+radius = 15.0
+height = 46.0
+
+[node name="Crab" type="Node2D"]
+position = Vector2(0, -20)
+script = ExtResource("1_3s7yi")
+health = 15
+
+[node name="Crab" type="CharacterBody2D" parent="."]
+
+[node name="Health" type="HBoxContainer" parent="Crab"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -60.0
+offset_right = 20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Crab/Health"]
+layout_mode = 2
+texture = ExtResource("2_mcin1")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Crab/Health"]
+layout_mode = 2
+theme = ExtResource("2_smjsg")
+theme_override_colors/font_color = Color(0.721569, 0.282353, 0.282353, 1)
+theme_override_font_sizes/font_size = 15
+text = "15"
+
+[node name="Sprite2D" type="Sprite2D" parent="Crab"]
+texture = ExtResource("1_rkp3v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crab"]
+visible = false
+position = Vector2(0, -5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_08e6u")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+texture = ExtResource("2_pl501")
