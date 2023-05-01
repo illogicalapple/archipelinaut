@@ -33,6 +33,7 @@ func _on_update_timer_timeout():
 			if valid:
 				var instance = crafting_slot.instantiate()
 				instance.item_texture = load("res://textures/items/" + recipe + ".png")
+				instance.item = recipe
+				instance.recipe = behavior.recipes[recipe]
 				$Recipes.add_child(instance)
-				print("bleeh")
 		queued = false

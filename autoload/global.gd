@@ -27,6 +27,21 @@ func achievement(id):
 	achievements[id][2] = true
 	emit_signal("achievement_change", id)
 
+func bye(item, amount):
+	var i1 = 0
+	for i in inventory:
+		if i.type == item:
+			if i.amount > amount:
+				i.amount -= amount
+				emit_signal("modify_inventory")
+				return true
+			elif i.amount == amount:
+				inventory[i1] = air
+				emit_signal("modify_inventory")
+				return true
+		i1 += 1
+	return false
+
 func pick_up(item, amount):
 	var open_slot = inventory.find(air)
 	var stack_slot = -1
