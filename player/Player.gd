@@ -16,14 +16,17 @@ signal damage(amount: float, show_effect: bool)
 @export var water_texture = Texture2D.new()
 @export var land_texture = Texture2D.new()
 
-func _ready():
+func in_water_once():
 	in_water = not $Hurtbox.overlaps_area(root.get_node("Islands/Island"))
-	position += screen_size / 2
 	if in_water:
 		$Sprite.texture = water_texture
 	else:
 		$Sprite.texture = land_texture
 		$Stamina.hide()
+
+func _ready():
+	position += screen_size / 2
+	call_deferred("in_water_once")
 
 func _process(delta):
 	velocity += Vector2(int(Input.is_action_pressed("move_right_" + str(device_id))) - int(Input.is_action_pressed("move_left_" + str(device_id))), int(Input.is_action_pressed("move_down_" + str(device_id))) - int(Input.is_action_pressed("move_up_" + str(device_id)))).normalized() * delta * 50
