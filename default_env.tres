@@ -4,4 +4,5 @@
 
 [resource]
 background_mode = 2
-background_sky = SubResource( 1 )
+sky = SubResource("1")
+glow_enabled = true
