@@ -43,5 +43,5 @@ func _on_body_entered(body):
 	if body.name == "BoatCollisions":
 		linear_velocity = Vector2.ZERO
 		thingy = false
-		spawn(10)
+		call_deferred("spawn", 10)
 		sleeping = true
