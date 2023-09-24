@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://hmwx16vci3ix"]
+
+[ext_resource type="Shader" path="res://island/island_nowarp.gdshader" id="1_k2mjw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o13mj"]
+shader = ExtResource("1_k2mjw")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mboox"]
+frequency = 0.005
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sfggy"]
+width = 1920
+height = 1080
+noise = SubResource("FastNoiseLite_mboox")
+
+[node name="ItchBg" type="Node"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_o13mj")
+texture = SubResource("NoiseTexture2D_sfggy")
+centered = false

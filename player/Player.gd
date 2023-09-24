@@ -4,7 +4,9 @@ extends CharacterBody2D
 var in_water: bool = false
 var breath_left: float = 20
 var dps: float = 0
-var mining_ability: float = 1
+var mining_ability: float = 15
+
+var item_holding
 
 const device_id: int = 0
 
@@ -27,11 +29,14 @@ func in_water_once():
 func _ready():
 	position += screen_size / 2
 	call_deferred("in_water_once")
+	global.modify_inventory.connect($ItemHolding.update_texture)
 
 func _process(delta):
 	velocity += Vector2(int(Input.is_action_pressed("move_right_" + str(device_id))) - int(Input.is_action_pressed("move_left_" + str(device_id))), int(Input.is_action_pressed("move_down_" + str(device_id))) - int(Input.is_action_pressed("move_up_" + str(device_id)))).normalized() * delta * 50
 	velocity = velocity.lerp(Vector2(0, 0), delta * 4 * (int(in_water) * 3 + 1))
 	position += velocity * delta / 0.02
+	$ItemHolding.position.x = sign(velocity.x + 0.0000000001) * 15
+	$ItemHolding.rotation = $ItemHolding.old_rot * sign(velocity.x + 0.0000000001)
 	if in_water:
 		breath_left -= delta
 		$Stamina.value = breath_left * 5
@@ -39,6 +44,7 @@ func _process(delta):
 			dps = 10
 	else:
 		dps = 0
+		
 
 func _on_Hurtbox_area_entered(area):
 	if area.name.contains("Island"):

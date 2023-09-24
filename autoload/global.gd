@@ -22,6 +22,11 @@ var achievements = { # [NAME, DESCRIPTION, COMPLETED?]
 	"wood_sword": ["excalibrrrrr", "craft a wooden sword", false]
 }
 
+var active_id: int:
+	set(aaa):
+		active_id = aaa
+		modify_inventory.emit()
+
 func achievement(id):
 	if(achievements[id][2]): return
 	achievements[id][2] = true
@@ -46,6 +51,7 @@ func pick_up(item, amount):
 	var open_slot = inventory.find(air)
 	var stack_slot = -1
 	if(item == "mayo"): achievement("play_mayo")
+	if item == "wood_sword": achievement("wood_sword")
 	for i in inventory:
 		if i.type == item:
 			stack_slot = inventory.find(i)

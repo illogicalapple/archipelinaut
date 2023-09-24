@@ -37,3 +37,4 @@ func _ready():
 
 func _process(delta):
 	$Camera.position = $Camera.position.lerp(player.position - screen_size / 2, delta * 8)
+	print(player.get_viewport_transform())

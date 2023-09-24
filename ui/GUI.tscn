@@ -90,18 +90,19 @@ script = ExtResource("6_1no6y")
 
 [node name="Pause" type="ColorRect" parent="Control"]
 process_mode = 2
-visible = false
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0, 0, 0, 0.643137)
 
 [node name="Default" type="Control" parent="Control/Pause"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 
 [node name="Icon" type="TextureRect" parent="Control/Pause/Default"]
 layout_mode = 1
@@ -150,6 +151,7 @@ visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 
 [node name="Achievements" type="VBoxContainer" parent="Control/Pause/Achievements"]
 layout_mode = 0
@@ -212,12 +214,6 @@ offset_bottom = -80.0
 grow_vertical = 0
 text = "HINT HINT HINT HINT"
 metadata/hints = PackedStringArray("this game was made by a monkey", "[insert \"helpful\" hint here]", "break trees and stuff", "is there hidden text?", "make a magma portal!", "this hint has 27 characters", "planet jikayoor!", "don\'t die!")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-layout_mode = 0
-offset_right = 543.0
-offset_bottom = 424.0
-theme_override_constants/separation = 0
 
 [connection signal="mouse_entered" from="Control/Pause/Default/Options/Settings" to="Control/Pause/Default/Options" method="_on_settings_mouse_entered"]
 [connection signal="mouse_exited" from="Control/Pause/Default/Options/Settings" to="Control/Pause/Default/Options" method="_on_settings_mouse_exited"]

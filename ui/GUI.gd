@@ -22,7 +22,7 @@ func pause(event: InputEvent):
 
 func _ready():
 	var hints = $Control/Loading/Hint.get_meta("hints")
-	$Control/Loading.show()
+	# $Control/Loading.show()
 	$Control/Pause.hide()
 	$Control/Loading/Hint.text = hints[randi_range(0, len(hints) - 1)]
 
