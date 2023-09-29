@@ -32,7 +32,9 @@ func _ready():
 	island_instance.position = Vector2.ZERO
 	$Islands.add_child(island_instance)
 	island_instance.island_gen(0)
+	print("waiting for generation")
 	await island_instance.generated
+	print("generation done!")
 	$GUI.loading_progress += 100
 
 func _process(delta):

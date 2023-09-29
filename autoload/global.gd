@@ -40,7 +40,7 @@ func bye(item, amount):
 				i.amount -= amount
 				emit_signal("modify_inventory")
 				return true
-			elif i.amount == amount:
+			if i.amount == amount:
 				inventory[i1] = air
 				emit_signal("modify_inventory")
 				return true
@@ -55,18 +55,17 @@ func pick_up(item, amount):
 	for i in inventory:
 		if i.type == item:
 			stack_slot = inventory.find(i)
-	if stack_slot == -1:
-		if open_slot == -1:
-			return false
-		else:
-			inventory[open_slot] = {
-				"type": item,
-				"amount": amount
-			}
-			emit_signal("modify_inventory")
-			return true
-	else:
+	if stack_slot != -1:
 		inventory[stack_slot].amount += amount
+		emit_signal("modify_inventory")
+		return true
+	if open_slot == -1:
+		return false
+	else:
+		inventory[open_slot] = {
+			"type": item,
+			"amount": amount
+		}
 		emit_signal("modify_inventory")
 		return true
 

@@ -5,12 +5,10 @@ var ticks = 0
 
 func _process(_delta):
 	ticks += 1
-	if ticks > 1 and not visible:
-		queue_free()
+	if ticks > 1 and not visible: queue_free()
 
 func _ready():
 	hide()
 
 func _on_hurtbox_area_entered(area):
-	if area is Island:
-		show()
+	if area is Island: show()

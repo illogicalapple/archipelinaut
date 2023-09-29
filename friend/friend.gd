@@ -44,10 +44,11 @@ func _process(delta):
 	if position.distance_to(player.position) > min_distance:
 		target = player.position
 		move_by((player.position - position).normalized() * speed * delta)
-	else:
-		if position.distance_to(target) < 50:
-			var radians = randf_range(0, PI * 2)
-			target = player.position + Vector2(cos(radians), sin(radians)) * randf_range(0, min_distance)
-			pause_timer = get_tree().create_timer(randf_range(2.0, 5.0))
-		if movable:
-			move_by((target - position).normalized() * speed * delta / 2.5)
+		return
+		
+	if position.distance_to(target) < 50:
+		var radians = randf_range(0, PI * 2)
+		target = player.position + Vector2(cos(radians), sin(radians)) * randf_range(0, min_distance)
+		pause_timer = get_tree().create_timer(randf_range(2.0, 5.0))
+	if movable:
+		move_by((target - position).normalized() * speed * delta / 2.5)

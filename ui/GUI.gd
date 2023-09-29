@@ -13,12 +13,12 @@ func pause(event: InputEvent):
 			get_tree().set_deferred("paused", true)
 			Input.set_custom_mouse_cursor(null)
 			$Control/Pause.show()
-		else:
-			for child in $Control/Pause/Default/Options.get_children():
-				(child as Label).add_theme_font_size_override("font_size", 56)
-			get_tree().paused = false
-			$Control/Pause.hide()
-			Input.set_custom_mouse_cursor(cursor, 0, Vector2(16, 16))
+			return
+		for child in $Control/Pause/Default/Options.get_children():
+			(child as Label).add_theme_font_size_override("font_size", 56)
+		get_tree().paused = false
+		$Control/Pause.hide()
+		Input.set_custom_mouse_cursor(cursor, 0, Vector2(16, 16))
 
 func _ready():
 	var hints = $Control/Loading/Hint.get_meta("hints")

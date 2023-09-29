@@ -4,7 +4,7 @@ extends CharacterBody2D
 var in_water: bool = false
 var breath_left: float = 20
 var dps: float = 0
-var mining_ability: float = 15
+var mining_ability: float = 1
 
 var item_holding
 
@@ -38,12 +38,12 @@ func _process(delta):
 	$ItemHolding.position.x = sign(velocity.x + 0.0000000001) * 15
 	$ItemHolding.rotation = $ItemHolding.old_rot * sign(velocity.x + 0.0000000001)
 	if in_water:
-		breath_left -= delta
-		$Stamina.value = breath_left * 5
-		if breath_left <= 0:
-			dps = 10
-	else:
 		dps = 0
+		return
+	breath_left -= delta
+	$Stamina.value = breath_left * 5
+	if breath_left <= 0:
+		dps = 10
 		
 
 func _on_Hurtbox_area_entered(area):
