@@ -32,8 +32,8 @@ func _ready():
 	global.modify_inventory.connect($ItemHolding.update_texture)
 
 func _process(delta):
-	velocity += Vector2(int(Input.is_action_pressed("move_right_" + str(device_id))) - int(Input.is_action_pressed("move_left_" + str(device_id))), int(Input.is_action_pressed("move_down_" + str(device_id))) - int(Input.is_action_pressed("move_up_" + str(device_id)))).normalized() * delta * 50
-	velocity = velocity.lerp(Vector2(0, 0), delta * 4 * (int(in_water) * 3 + 1))
+	velocity += Input.get_vector("move_left_0", "move_right_0", "move_up_0", "move_down_0")
+	velocity = velocity.lerp(Vector2(0, 0), delta * 8 * (int(in_water) * 1.1 + 1))
 	position += velocity * delta / 0.02
 	$ItemHolding.position.x = sign(velocity.x + 0.0000000001) * 15
 	$ItemHolding.rotation = $ItemHolding.old_rot * sign(velocity.x + 0.0000000001)
