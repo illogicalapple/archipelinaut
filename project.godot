@@ -132,6 +132,7 @@ friend_spin!!!={
 2d_physics/layer_8="Peerate"
 2d_physics/layer_9="PeerateHurtbox"
 2d_physics/layer_10="DamageGiver"
+2d_physics/layer_11="Reach"
 
 [physics]
 

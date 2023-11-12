@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://brf8k5pgguil7"]
+[gd_scene load_steps=15 format=3 uid="uid://brf8k5pgguil7"]
 
 [ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://fonts/theme.tres" id="1"]
 [ext_resource type="Script" path="res://ui/GUI.gd" id="3"]
@@ -31,6 +31,10 @@ corner_radius_top_left = 56
 corner_radius_top_right = 56
 corner_radius_bottom_right = 56
 corner_radius_bottom_left = 56
+
+[sub_resource type="LabelSettings" id="LabelSettings_2h2hv"]
+font = ExtResource("3_molnl")
+font_size = 256
 
 [node name="GUI" type="CanvasLayer"]
 process_mode = 3
@@ -89,6 +93,7 @@ script = ExtResource("6_1no6y")
 
 [node name="Pause" type="ColorRect" parent="Control"]
 process_mode = 2
+visible = false
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -213,6 +218,32 @@ offset_bottom = -80.0
 grow_vertical = 0
 text = "HINT HINT HINT HINT"
 metadata/hints = PackedStringArray("this game was made by a monkey", "[insert \"helpful\" hint here]", "break trees and stuff", "is there hidden text?", "make a magma portal!", "this hint has 27 characters", "planet jikayoor!", "don\'t die!")
+
+[node name="Dead" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.509804, 0.0784314, 0.12549, 0.596078)
+
+[node name="Label" type="Label" parent="Control/Dead"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -136.0
+offset_right = 384.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "[dead]"
+label_settings = SubResource("LabelSettings_2h2hv")
 
 [connection signal="mouse_entered" from="Control/Pause/Default/Options/Settings" to="Control/Pause/Default/Options" method="_on_settings_mouse_entered"]
 [connection signal="mouse_exited" from="Control/Pause/Default/Options/Settings" to="Control/Pause/Default/Options" method="_on_settings_mouse_exited"]

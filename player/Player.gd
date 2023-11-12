@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # var velocity := Vector2(0, 0)
 var in_water: bool = false
-var breath_left: float = 20
+var breath_left: float = 10
 var dps: float = 0
 var mining_ability: float = 1
 
@@ -37,11 +37,11 @@ func _process(delta):
 	position += velocity * delta / 0.02
 	$ItemHolding.position.x = sign(velocity.x + 0.0000000001) * 15
 	$ItemHolding.rotation = $ItemHolding.old_rot * sign(velocity.x + 0.0000000001)
-	if in_water:
+	if !in_water:
 		dps = 0
 		return
 	breath_left -= delta
-	$Stamina.value = breath_left * 5
+	$Stamina.value = breath_left * 10
 	if breath_left <= 0:
 		dps = 10
 		
@@ -57,7 +57,7 @@ func _on_Hurtbox_area_exited(area):
 		$Stamina.show()
 		$Stamina.value = 100
 		$Sprite.texture = water_texture
-		breath_left = 20
+		breath_left = 10
 		in_water = true
 
 func _on_dps_timeout():
@@ -66,3 +66,11 @@ func _on_dps_timeout():
 func _input(event): # DEBUG
 	if event.is_action_pressed("hotbar_4"):
 		_on_Hurtbox_area_entered(root.get_node("Islands/Island"))
+
+func reload_reach():
+	$Reach.scale = Vector2.ZERO
+	var tween = create_tween()
+	tween.tween_property($Reach, "scale", Vector2.ONE, 2.0)
+	
+	
+	

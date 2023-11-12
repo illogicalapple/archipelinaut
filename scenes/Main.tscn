@@ -1,20 +1,35 @@
-[gd_scene load_steps=8 format=3 uid="uid://m3xm8lo304ey"]
+[gd_scene load_steps=10 format=3 uid="uid://m3xm8lo304ey"]
 
 [ext_resource type="Script" path="res://scenes/Main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://brf8k5pgguil7" path="res://ui/GUI.tscn" id="2"]
+[ext_resource type="Shader" path="res://water.gdshader" id="2_5apy1"]
 [ext_resource type="PackedScene" uid="uid://c08g4pan38n7l" path="res://player/Player.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bnqk7bnhiixn3" path="res://friend/friend.tscn" id="3_nl7fy"]
 [ext_resource type="PackedScene" uid="uid://saxbimja6m45" path="res://mobs/pirate/evil_ship.tscn" id="4_0j337"]
 [ext_resource type="AudioStream" uid="uid://mtxykg6cud0j" path="res://sound/music/normal-v2.wav" id="4_xrkh0"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m6d88"]
+render_priority = 0
+shader = ExtResource("2_5apy1")
+
 [sub_resource type="Environment" id="Environment_uk6hd"]
 glow_enabled = true
 glow_normalized = true
-glow_bloom = 0.14
+glow_blend_mode = 0
 
 [node name="Root" type="Node"]
 process_priority = 100
 script = ExtResource("1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -4096
+material = SubResource("ShaderMaterial_m6d88")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.396078, 0.705882, 0.827451, 1)
 
 [node name="Camera" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -35,6 +50,7 @@ position = Vector2(1448, 408)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_xrkh0")
+volume_db = -5.0
 autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

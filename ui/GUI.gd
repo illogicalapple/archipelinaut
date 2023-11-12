@@ -29,6 +29,7 @@ func _ready():
 func _process(delta):
 	health += delta / 5
 	health = clamp(health, 0, 100)
+	$Control/Health.value = health
 
 func _input(event):
 	pause(event)
