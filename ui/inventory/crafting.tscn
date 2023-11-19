@@ -42,5 +42,3 @@ autostart = true
 [node name="Recipes" type="VBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 20
-
-[connection signal="timeout" from="UpdateTimer" to="." method="_on_update_timer_timeout"]

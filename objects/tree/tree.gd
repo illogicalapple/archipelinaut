@@ -34,4 +34,7 @@ func _on_chop_timer_timeout():
 	player.reload_reach()
 	global.drop("log", randi_range(1, 3), position)
 	global.achievement("punch_tree")
+	modulate = Color.TRANSPARENT
+	$AudioStreamPlayer.play()
+	await $AudioStreamPlayer.finished
 	queue_free() # DIE YOU DUMB USELESS TREE

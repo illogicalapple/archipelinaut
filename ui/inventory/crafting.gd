@@ -23,8 +23,9 @@ func is_recipe_valid(recipe):
 		if inventory[element] < behavior.recipes[recipe][element]: return false
 		return true
 
-func _on_update_timer_timeout():
+func _process(_delta):
 	if not queued: return
+	await RenderingServer.frame_post_draw
 	
 	for node in $Recipes.get_children():
 		$Recipes.remove_child(node)
