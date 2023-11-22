@@ -4,10 +4,10 @@
 [ext_resource type="Shader" path="res://island/island.gdshader" id="2_5iqxk"]
 [ext_resource type="Shader" path="res://island/trees.gdshader" id="3_imqvf"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tmpl3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w1jep"]
 shader = ExtResource("2_5iqxk")
 
-[sub_resource type="FastNoiseLite" id="1"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6he73"]
 resource_local_to_scene = true
 seed = 7
 frequency = 0.003
@@ -19,7 +19,7 @@ fractal_gain = 0.1
 resource_local_to_scene = true
 width = 1920
 height = 1080
-noise = SubResource("1")
+noise = SubResource("FastNoiseLite_6he73")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f86ox"]
 shader = ExtResource("3_imqvf")
@@ -63,7 +63,7 @@ render_target_clear_mode = 1
 render_target_update_mode = 1
 
 [node name="Island" type="Sprite2D" parent="IslandGen"]
-material = SubResource("ShaderMaterial_tmpl3")
+material = SubResource("ShaderMaterial_w1jep")
 texture = SubResource("NoiseTexture2D_qg7wu")
 centered = false
 
