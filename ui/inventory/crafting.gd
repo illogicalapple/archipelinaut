@@ -8,7 +8,7 @@ func _ready():
 	global.modify_inventory.connect(_on_inventory_modification)
 
 func _on_inventory_modification():
-	print("bleh")
+	await RenderingServer.frame_post_draw
 	queued = true
 	inventory = {}
 	for item in global.inventory:
@@ -25,7 +25,7 @@ func is_recipe_valid(recipe):
 
 func _process(_delta):
 	if not queued: return
-	await RenderingServer.frame_post_draw
+	queued = false
 	
 	for node in $Recipes.get_children():
 		$Recipes.remove_child(node)
