@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bekwad7n7w77a"]
+[gd_scene load_steps=9 format=3 uid="uid://bekwad7n7w77a"]
 
 [ext_resource type="Texture2D" uid="uid://cnr8gwts6c7rx" path="res://mobs/pirate/peerate.png" id="1_55qot"]
 [ext_resource type="Script" path="res://mobs/pirate/peerate.gd" id="1_ekv83"]
-[ext_resource type="PackedScene" uid="uid://dnlt05i85npdv" path="res://addons/TargettingCalculations/MouseTarget/MouseTarget.tscn" id="3_io50e"]
 [ext_resource type="PackedScene" uid="uid://miufisyak5o" path="res://addons/OpenTopDownAI/Agents/NDirectionalAgent2D/NDirectionalAgent2D.tscn" id="4_mu484"]
+[ext_resource type="PackedScene" uid="uid://dg14dxhn80i2o" path="res://addons/OpenTopDownAI/Behaviors/PrioritizeZeroBehavior/PrioritizeZeroBehavior.tscn" id="5_847b2"]
 [ext_resource type="PackedScene" uid="uid://byfpfmutemcww" path="res://addons/OpenTopDownAI/Behaviors/MoveTowardsBehavior/MoveTowardsBehavior.tscn" id="5_p34bc"]
+[ext_resource type="PackedScene" uid="uid://bbuapicxld64r" path="res://addons/TargettingCalculations/NodeWithTagTarget/NodeWithTagTarget.tscn" id="6_1gge4"]
 [ext_resource type="PackedScene" uid="uid://d31f2ur7adxc1" path="res://addons/OpenTopDownAI/Units/Unit2D/Unit2D.tscn" id="6_t4qdh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f3kn1"]
@@ -17,10 +18,11 @@ collision_mask = 0
 script = ExtResource("1_ekv83")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -27.5)
+position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_f3kn1")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, 13)
 collision_layer = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -28,6 +30,7 @@ position = Vector2(0, -27.5)
 shape = SubResource("CapsuleShape2D_f3kn1")
 
 [node name="PirateGraphics" type="Node2D" parent="."]
+position = Vector2(0, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="PirateGraphics"]
 position = Vector2(0, -30)
@@ -35,14 +38,22 @@ texture = ExtResource("1_55qot")
 
 [node name="AI" type="Node" parent="."]
 
-[node name="MouseTarget" parent="AI" instance=ExtResource("3_io50e")]
-
 [node name="NDirectionalAgent2D" parent="AI" instance=ExtResource("4_mu484")]
 
 [node name="MoveTowardsBehavior" parent="AI/NDirectionalAgent2D" node_paths=PackedStringArray("target") instance=ExtResource("5_p34bc")]
-target = NodePath("../../MouseTarget")
+target = NodePath("../../NodeWithTagTarget")
+smoothnessRadius = 25.0
+scalingPower = 0.0
+minDistance = 50.0
+maxDistance = 55.0
+
+[node name="PrioritizeZeroBehavior" parent="AI/NDirectionalAgent2D" instance=ExtResource("5_847b2")]
+weight = 0.5
 
 [node name="Unit2D" parent="AI" instance=ExtResource("6_t4qdh")]
 speed = 50.0
+
+[node name="NodeWithTagTarget" parent="AI" instance=ExtResource("6_1gge4")]
+group = "player"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

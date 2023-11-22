@@ -15,7 +15,7 @@ radius = 150.0
 radius = 16.0
 height = 53.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(0, -26)
 collision_layer = 2
 collision_mask = 0
@@ -35,20 +35,21 @@ texture = ExtResource("4_vl6nd")
 shape = SubResource("CircleShape2D_36b6n")
 
 [node name="Line2D" type="Line2D" parent="."]
+position = Vector2(0, -17)
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, -15.5)
 texture = ExtResource("1")
 
 [node name="ItemHolding" parent="." instance=ExtResource("4_wsuh7")]
-position = Vector2(15, 4)
+position = Vector2(15, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.5)
+position = Vector2(0, -19)
 shape = SubResource("1")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, -15.5)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]

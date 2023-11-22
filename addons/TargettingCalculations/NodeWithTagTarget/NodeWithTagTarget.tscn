@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbuapicxld64r"]
+
+[ext_resource type="Script" path="res://addons/TargettingCalculations/NodeWithTagTarget/NodeWithTagTarget.cs" id="1_5g05u"]
+
+[node name="NodeWithTagTarget" type="Node"]
+script = ExtResource("1_5g05u")
