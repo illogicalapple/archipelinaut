@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://byfpfmutemcww"]
+
+[ext_resource type="Script" path="res://addons/OpenTopDownAI/Behaviors/MoveTowardsBehavior/MoveTowardsBehavior.cs" id="1_qgmsv"]
+
+[node name="MoveTowardsBehavior" type="Node"]
+script = ExtResource("1_qgmsv")

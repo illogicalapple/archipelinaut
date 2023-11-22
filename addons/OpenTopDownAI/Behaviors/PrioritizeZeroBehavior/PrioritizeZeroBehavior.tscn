@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg14dxhn80i2o"]
+
+[ext_resource type="Script" path="res://addons/OpenTopDownAI/Behaviors/PrioritizeZeroBehavior/PrioritizeZeroBehavior.cs" id="1_ogypr"]
+
+[node name="PrioritizeZeroBehavior" type="Node"]
+script = ExtResource("1_ogypr")

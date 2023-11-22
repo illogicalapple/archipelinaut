@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://du31ry8gqwhxq"]
+
+[ext_resource type="Script" path="res://addons/TargettingCalculations/Vector2Target/Vector2Target.cs" id="1_g2mo3"]
+
+[node name="Vector2Target" type="Node"]
+script = ExtResource("1_g2mo3")

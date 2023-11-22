@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d31f2ur7adxc1"]
+
+[ext_resource type="Script" path="res://addons/OpenTopDownAI/Units/Unit2D/Unit2D.cs" id="1_xouys"]
+
+[node name="Unit2D" type="Node"]
+script = ExtResource("1_xouys")

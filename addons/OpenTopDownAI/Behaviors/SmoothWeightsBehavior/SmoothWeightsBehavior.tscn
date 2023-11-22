@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmm73r66n8jbl"]
+
+[ext_resource type="Script" path="res://addons/OpenTopDownAI/Behaviors/SmoothWeightsBehavior/SmoothWeightsBehavior.cs" id="1_m6i2n"]
+
+[node name="SmoothWeightsBehavior" type="Node"]
+script = ExtResource("1_m6i2n")

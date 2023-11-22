@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://m3xm8lo304ey"]
+[gd_scene load_steps=11 format=3 uid="uid://m3xm8lo304ey"]
 
 [ext_resource type="Script" path="res://scenes/Main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://brf8k5pgguil7" path="res://ui/GUI.tscn" id="2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bnqk7bnhiixn3" path="res://friend/friend.tscn" id="3_nl7fy"]
 [ext_resource type="PackedScene" uid="uid://saxbimja6m45" path="res://mobs/pirate/evil_ship.tscn" id="4_0j337"]
 [ext_resource type="AudioStream" uid="uid://mtxykg6cud0j" path="res://sound/music/normal-v2.wav" id="4_xrkh0"]
+[ext_resource type="PackedScene" uid="uid://bekwad7n7w77a" path="res://mobs/pirate/peerate.tscn" id="6_fhfbt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m6d88"]
 render_priority = 0
@@ -45,6 +46,9 @@ y_sort_enabled = true
 
 [node name="EvilShip" parent="Things" instance=ExtResource("4_0j337")]
 position = Vector2(1448, 408)
+
+[node name="Peerate" parent="Things" instance=ExtResource("6_fhfbt")]
+position = Vector2(1011, 591)
 
 [node name="GUI" parent="." instance=ExtResource("2")]
 

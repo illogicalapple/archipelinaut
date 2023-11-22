@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnlt05i85npdv"]
+
+[ext_resource type="Script" path="res://addons/TargettingCalculations/MouseTarget/MouseTarget.cs" id="1_a88h1"]
+
+[node name="MouseTarget" type="Node"]
+script = ExtResource("1_a88h1")
