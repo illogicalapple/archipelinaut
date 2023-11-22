@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dtjypusbcsg40" path="res://textures/items/test.png" id="3_p6fxm"]
 
 [node name="CraftingSlot" type="TextureButton"]
+process_mode = 3
 offset_right = 75.0
 offset_bottom = 75.0
 texture_normal = ExtResource("1_4sg8a")
