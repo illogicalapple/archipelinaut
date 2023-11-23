@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://addons/OpenTopDownAI/Agents/NDirectionalAgent2D/NDirectionalAgent2D.cs" id="1_jfj0n"]
 
-[node name="DiagonalAgent2D" type="Node"]
+[node name="NDirectionalAgent2D" type="Node"]
 script = ExtResource("1_jfj0n")

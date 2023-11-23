@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bekwad7n7w77a"]
+[gd_scene load_steps=10 format=3 uid="uid://bekwad7n7w77a"]
 
 [ext_resource type="Texture2D" uid="uid://cnr8gwts6c7rx" path="res://mobs/pirate/peerate.png" id="1_55qot"]
 [ext_resource type="Script" path="res://mobs/pirate/peerate.gd" id="1_ekv83"]
@@ -7,12 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://byfpfmutemcww" path="res://addons/OpenTopDownAI/Behaviors/MoveTowardsBehavior/MoveTowardsBehavior.tscn" id="5_p34bc"]
 [ext_resource type="PackedScene" uid="uid://bbuapicxld64r" path="res://addons/TargettingCalculations/NodeWithTagTarget/NodeWithTagTarget.tscn" id="6_1gge4"]
 [ext_resource type="PackedScene" uid="uid://d31f2ur7adxc1" path="res://addons/OpenTopDownAI/Units/Unit2D/Unit2D.tscn" id="6_t4qdh"]
+[ext_resource type="PackedScene" uid="uid://cnpi3ardrrti3" path="res://addons/TargettingCalculations/NearestNodeWithTagTarget/NearestNodeWithTagTarget.tscn" id="8_wmbt0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f3kn1"]
 radius = 16.0
 height = 53.0
 
-[node name="Peerate" type="CharacterBody2D"]
+[node name="Peerate" type="CharacterBody2D" groups=["avoid"]]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_ekv83")
@@ -40,12 +41,19 @@ texture = ExtResource("1_55qot")
 
 [node name="NDirectionalAgent2D" parent="AI" instance=ExtResource("4_mu484")]
 
+[node name="AvoidBehavior2" parent="AI/NDirectionalAgent2D" node_paths=PackedStringArray("target") instance=ExtResource("5_p34bc")]
+target = NodePath("../../NearestNodeWithTagTarget")
+smoothnessRadius = 150.0
+minDistance = 50.0
+maxDistance = 10000.0
+
 [node name="MoveTowardsBehavior" parent="AI/NDirectionalAgent2D" node_paths=PackedStringArray("target") instance=ExtResource("5_p34bc")]
 target = NodePath("../../NodeWithTagTarget")
-smoothnessRadius = 25.0
+smoothnessRadius = 20.0
 scalingPower = 0.0
 minDistance = 50.0
-maxDistance = 55.0
+maxDistance = 50.0
+weight = 3.0
 
 [node name="PrioritizeZeroBehavior" parent="AI/NDirectionalAgent2D" instance=ExtResource("5_847b2")]
 weight = 0.5
@@ -55,5 +63,8 @@ speed = 50.0
 
 [node name="NodeWithTagTarget" parent="AI" instance=ExtResource("6_1gge4")]
 group = "player"
+
+[node name="NearestNodeWithTagTarget" parent="AI" instance=ExtResource("8_wmbt0")]
+group = "avoid"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
