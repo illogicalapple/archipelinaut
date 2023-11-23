@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://brf8k5pgguil7"]
+[gd_scene load_steps=18 format=3 uid="uid://brf8k5pgguil7"]
 
 [ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://fonts/theme.tres" id="1"]
+[ext_resource type="Shader" path="res://ui/blur.gdshader" id="2_xyeow"]
 [ext_resource type="Script" path="res://ui/GUI.gd" id="3"]
 [ext_resource type="FontFile" uid="uid://bepjl3k46ose5" path="res://fonts/Inconsolata-Bold.ttf" id="3_molnl"]
 [ext_resource type="Texture2D" uid="uid://cwbi0eemx1rka" path="res://ui/pause.svg" id="5"]
@@ -10,6 +11,10 @@
 [ext_resource type="FontFile" path="res://fonts/header_font.tres" id="7_u473c"]
 [ext_resource type="Script" path="res://ui/achievements/Achievements.gd" id="9_3ppbk"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g7ys4"]
+shader = ExtResource("2_xyeow")
+shader_parameter/lod = 0.955
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4mya"]
 bg_color = Color(0, 0, 0, 0.156863)
 corner_detail = 1
@@ -17,6 +22,10 @@ corner_detail = 1
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bht4"]
 bg_color = Color(0, 0, 0, 0.156863)
 corner_detail = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_76oda"]
+shader = ExtResource("2_xyeow")
+shader_parameter/lod = 2.421
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wa4so"]
 bg_color = Color(0.235294, 0.501961, 0.6, 1)
@@ -42,6 +51,7 @@ script = ExtResource("3")
 
 [node name="Control" type="Control" parent="."]
 process_mode = 3
+material = SubResource("ShaderMaterial_g7ys4")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,6 +100,16 @@ offset_bottom = -80.0
 grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("6_1no6y")
+
+[node name="BGBlur" type="ColorRect" parent="Control"]
+visible = false
+material = SubResource("ShaderMaterial_76oda")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Pause" type="ColorRect" parent="Control"]
 process_mode = 2
