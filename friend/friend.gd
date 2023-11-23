@@ -11,10 +11,7 @@ var pause_timer: SceneTreeTimer : set = _set_pause_timer
 var movable: bool = true
 
 func move_by(amount: Vector2):
-	if amount.x < 0:
-		scale.x = -1
-	else:
-		scale.x = 1
+	scale.x = -1 if amount.x < 0 else 1
 	position += amount
 
 func _set_pause_timer(new_pause_timer):
