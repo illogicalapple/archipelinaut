@@ -38,18 +38,18 @@ shape = SubResource("CircleShape2D_36b6n")
 position = Vector2(0, -17)
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -15.5)
+position = Vector2(0, 2.5)
 texture = ExtResource("1")
 
 [node name="ItemHolding" parent="." instance=ExtResource("4_wsuh7")]
-position = Vector2(15, -5)
+position = Vector2(15, 13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -19)
+position = Vector2(0, -1)
 shape = SubResource("1")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(0, -15.5)
+position = Vector2(0, 2.5)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]

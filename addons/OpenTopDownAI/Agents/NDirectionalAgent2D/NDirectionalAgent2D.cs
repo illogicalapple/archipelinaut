@@ -7,14 +7,14 @@ using OpenTopDownAI;
 
 public partial class NDirectionalAgent2D : Agent
 {
-    [Export]
-    public int directions = 8;
+	[Export]
+	public int directions = 8;
 
-    public override void _Ready()
-    {
-        base._Ready();
-        directionsToTravel = GetLocalMapCoordinatesInCircle(1.0f, directions);
-        directionsToTravel.Add(Vector2I.Zero);
-        InitializeEmptyWeights();
-    }
+	public override void _Ready()
+	{
+		base._Ready();
+		directionsToTravel = GetLocalMapCoordinatesInCircle(1.0f, directions);
+		directionsToTravel.Add(Vector2I.Zero);
+		InitializeEmptyWeights();
+	}
 }
