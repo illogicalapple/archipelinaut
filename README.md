@@ -1,2 +1,2 @@
 # archipelinaut
-island game based off kraken's curse
+[GDD](./GDD.md)
