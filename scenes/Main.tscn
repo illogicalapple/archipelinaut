@@ -69,7 +69,6 @@ color = Color(1, 1, 1, 0)
 process_mode = 3
 stream = ExtResource("4_xrkh0")
 autoplay = true
-bus = &"Music"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_uk6hd")

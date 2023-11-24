@@ -14,7 +14,7 @@ height = 120.0
 radius = 11.0
 height = 92.55
 
-[node name="Tree" type="Area2D"]
+[node name="Tree" type="Area2D" groups=["avoid"]]
 position = Vector2(0, -13)
 collision_layer = 8
 collision_mask = 1024
