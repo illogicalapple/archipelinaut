@@ -13,7 +13,7 @@ public partial class Unit2D : Unit<Vector2>
 
     public override void SetMoveDirection(Vector2 direction)
     {
-        moveDirection = (smoothness * moveDirection + direction)/(smoothness + 1.0f);
+        moveDirection = (smoothness * moveDirection + direction) / (smoothness + 1.0f);
     }
 
     public override void _Process(double _delta)
