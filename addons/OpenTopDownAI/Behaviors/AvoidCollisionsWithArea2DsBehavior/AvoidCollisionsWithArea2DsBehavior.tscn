@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba8im34idychq"]
+
+[ext_resource type="Script" path="res://addons/OpenTopDownAI/Behaviors/AvoidCollisionsWithArea2DsBehavior/AvoidCollisionsWithArea2DsBehavior.cs" id="1_s4j2w"]
+
+[node name="AvoidCollisionsWithArea2DsBehavior" type="Node"]
+script = ExtResource("1_s4j2w")

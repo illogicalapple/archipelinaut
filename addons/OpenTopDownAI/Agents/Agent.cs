@@ -75,42 +75,13 @@ public abstract partial class Agent : Node
         }
     }
 
-    protected List<Vector2> GetLocalMapCoordinatesInCircle(
-        float radius,
-        int numberOfPoints,
-        bool roundResults = false
-    )
-    {
-        List<Vector2> result = new List<Vector2>();
-        for (int i = 0; i < numberOfPoints; i++)
-        {
-            float angle = i * 2.0f * Mathf.Pi / numberOfPoints;
-            Vector2 coordinate = radius * new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-            if (roundResults)
-            {
-                coordinate = new Vector2(Mathf.Round(coordinate.X), Mathf.Round(coordinate.Y));
-            }
-
-            // Make sure there are no repeats
-            if (result.Count == 0 || result[result.Count - 1] != coordinate)
-            {
-                // When it comes all the way around, it can have duplicates of the first value.
-                if (result.Count != 0 && result[0] == coordinate)
-                {
-                    return result;
-                }
-                result.Add(coordinate);
-            }
-        }
-        return result;
-    }
-
     Vector2 GetOptimalVector(List<Vector2> potentialDirections, List<float> weights)
     {
-        potentialDirections = Utils.SortListByWeights<Vector2>(potentialDirections, weights);
-        for (int i = 0; i < potentialDirections.Count; i++)
+        var sortedDirections = new List<Vector2>(potentialDirections);
+        sortedDirections = Utils.SortListByWeights<Vector2>(sortedDirections, weights);
+        for (int i = 0; i < sortedDirections.Count; i++)
         {
-            Vector2 potentialDirection = potentialDirections[i];
+            Vector2 potentialDirection = sortedDirections[i];
             if (IsDirectionEmpty(potentialDirection))
             {
                 return potentialDirection;
