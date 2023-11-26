@@ -38,3 +38,7 @@ func _on_chop_timer_timeout():
 	$AudioStreamPlayer.play()
 	await $AudioStreamPlayer.finished
 	queue_free() # DIE YOU DUMB USELESS TREE
+
+
+func _on_punch_sfx_finished():
+	pass # Replace with function body.
