@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsfrcfvj6lmch"]
+[gd_scene load_steps=9 format=3 uid="uid://dsfrcfvj6lmch"]
 
 [ext_resource type="Script" path="res://objects/tree/tree.gd" id="1_1c5pm"]
 [ext_resource type="Texture2D" uid="uid://m0v4b7rmeec8" path="res://objects/tree/tree.svg" id="1_eb0fj"]
 [ext_resource type="Texture2D" uid="uid://ce5cnseaqrn4b" path="res://player/stamina_bg.svg" id="3_5cnng"]
 [ext_resource type="Texture2D" uid="uid://csdnwrhkmnn0o" path="res://player/stamina.svg" id="4_261w7"]
 [ext_resource type="AudioStream" uid="uid://cu4gcay3555ni" path="res://sound/sfx/pop.mp3" id="5_hm06b"]
+[ext_resource type="AudioStream" uid="uid://dmb61hlpebwyf" path="res://sound/sfx/treepunchsfx.mp3" id="6_k7w62"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yx2bc"]
 radius = 11.0
@@ -59,9 +60,15 @@ texture_under = ExtResource("3_5cnng")
 texture_progress = ExtResource("4_261w7")
 metadata/_edit_use_anchors_ = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_hm06b")
+
+[node name="PunchSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_k7w62")
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="ChopTimer" to="." method="_on_chop_timer_timeout"]
+[connection signal="finished" from="PunchSFX" to="." method="_on_punch_sfx_finished"]
