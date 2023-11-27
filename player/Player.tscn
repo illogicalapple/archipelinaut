@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c08g4pan38n7l"]
+[gd_scene load_steps=11 format=3 uid="uid://c08g4pan38n7l"]
 
 [ext_resource type="Texture2D" uid="uid://wlqjc32sx6re" path="res://player/player.svg" id="1"]
 [ext_resource type="Script" path="res://player/Player.gd" id="2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bwssahaw4fo5" path="res://player/reach.png" id="4_vl6nd"]
 [ext_resource type="PackedScene" uid="uid://dn7m5bwfw144p" path="res://player/hands/item_holding.tscn" id="4_wsuh7"]
 [ext_resource type="Texture2D" uid="uid://csdnwrhkmnn0o" path="res://player/stamina.svg" id="5_8nacs"]
+[ext_resource type="AudioStream" uid="uid://dmfp2v15yrp4a" path="res://sound/sfx/grasswalk2sfx.mp3" id="8_4poe5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_36b6n"]
 radius = 150.0
@@ -75,6 +76,10 @@ metadata/_edit_use_anchors_ = true
 wait_time = 0.5
 autostart = true
 
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_4poe5")
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="area_exited" from="Hurtbox" to="." method="_on_Hurtbox_area_exited"]
 [connection signal="timeout" from="DPS" to="." method="_on_dps_timeout"]
+[connection signal="finished" from="Footsteps" to="." method="_on_footsteps_finished"]

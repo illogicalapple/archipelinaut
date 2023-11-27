@@ -62,11 +62,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_hm06b")
+bus = &"SFX"
 
 [node name="PunchSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_k7w62")
-
-[node name="Timer" type="Timer" parent="."]
+bus = &"SFX"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

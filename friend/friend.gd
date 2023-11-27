@@ -26,6 +26,7 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("friend_spin!!!") and !spinning:
+		$AudioStreamPlayer2D.play()
 		global.achievement("friend_spin")
 		spinning = true
 		$SPINANIMATION.play("friend_spin!!!")

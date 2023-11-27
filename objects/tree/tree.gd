@@ -14,6 +14,7 @@ func _on_mouse_exited():
 	modulate = Color(1, 1, 1) # undo
 	$ChopTimer.stop()
 	$Health.hide()
+	$PunchSFX.stop()
 
 func _process(_delta):
 	if not $ChopTimer.is_stopped():
@@ -22,15 +23,18 @@ func _process(_delta):
 func _input(event):
 	if event.is_action_pressed("attack_0") and active:
 		if overlaps_area(player.get_node("Reach")):
+			$PunchSFX.play()
 			$Health.show()
 			$ChopTimer.wait_time = 3.0 / player.mining_ability
 			$Health.max_value = $ChopTimer.wait_time * 30
 			$ChopTimer.start()
-	elif event.is_action_released("attack_0") and active:
+	elif event.is_action_released("attack_0"):
+		$PunchSFX.stop()
 		$ChopTimer.stop()
 		$Health.hide()
 
 func _on_chop_timer_timeout():
+	$PunchSFX.stop()
 	player.reload_reach()
 	global.drop("log", randi_range(1, 3), position)
 	global.achievement("punch_tree")
@@ -41,4 +45,5 @@ func _on_chop_timer_timeout():
 
 
 func _on_punch_sfx_finished():
-	pass # Replace with function body.
+	$PunchSFX.pitch_scale = randf_range(0.8, 1.2)
+	$PunchSFX.play()

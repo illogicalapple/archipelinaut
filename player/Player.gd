@@ -5,6 +5,7 @@ var in_water: bool = false
 var breath_left: float = 10
 var dps: float = 0
 var mining_ability: float = 1
+var footsteps_playing: bool = false
 
 var item_holding
 
@@ -37,6 +38,14 @@ func _process(delta):
 	position += velocity * delta / 0.02
 	$ItemHolding.position.x = sign(velocity.x + 0.0000000001) * 15
 	$ItemHolding.rotation = $ItemHolding.old_rot * sign(velocity.x + 0.0000000001)
+	if not Input.get_vector("move_left_0", "move_right_0", "move_up_0", "move_down_0"):
+		footsteps_playing = false
+		$Footsteps.stop()
+	
+	if Input.get_vector("move_left_0", "move_right_0", "move_up_0", "move_down_0") and not footsteps_playing:
+		footsteps_playing = true
+		$Footsteps.play()
+	
 	if !in_water:
 		dps = 0
 		return
@@ -73,4 +82,9 @@ func reload_reach():
 	tween.tween_property($Reach, "scale", Vector2.ONE, 2.0)
 	
 	
-	
+
+func _on_footsteps_finished():
+	footsteps_playing = true
+	$Footsteps.pitch_scale = randf_range(0.6, 1.1)
+	await get_tree().create_timer(0.1).timeout
+	$Footsteps.play()

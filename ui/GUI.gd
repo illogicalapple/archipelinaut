@@ -13,18 +13,18 @@ func pause(event: InputEvent):
 	paused = not paused
 	$Control/Pause/Default/Options.open_screen($Control/Pause/Default)
 	if paused:
+		AudioServer.set_bus_effect_enabled(1, 0, true)
+		AudioServer.set_bus_volume_db(1, -7)
 		get_tree().set_deferred("paused", true)
 		$Control/BGBlur.show()
 		Input.set_custom_mouse_cursor(null)
 		$Control/Pause.show()
-		AudioServer.set_bus_effect_enabled(1, 0, true)
-		AudioServer.set_bus_volume_db(1, -7)
 		return
 	for child in $Control/Pause/Default/Options.get_children():
 		(child as Label).add_theme_font_size_override("font_size", 56)
 	$Control/BGBlur.hide()
 	AudioServer.set_bus_effect_enabled(1, 0, false)
-	AudioServer.set_bus_volume_db(1, 0)
+	AudioServer.set_bus_volume_db(1, -5)
 	get_tree().paused = false
 	$Control/Pause.hide()
 	Input.set_custom_mouse_cursor(cursor, 0, Vector2(16, 16))
