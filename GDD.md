@@ -149,12 +149,12 @@ The birds of the animal kingdom will see The Duck as their leader. Creatures lik
 
 
 
-The Player’s Boat
+## The Player’s Boat
 
-The Player’s Boat is used to sail the seas. The Player can only control one boat at a time. No matter the size of the boat, only The Player will be needed to man it.
-When The Player is onboard The Boat, it acts as an extended inventory. Ranged weapons will draw their ammo supply from The Boat’s hold; if The Boat has 50 bullets on board, The Player can shoot 50 bullets etc.
-When The Player boards The Boat, their ammo is immediately placed into The Boat’s hold. When they leave, some ammo is placed into their inventory from the hold.
-Boats are immune to small arms fire like muskets and arrows, but can take damage from cannonballs and are susceptible to fire. They can also take damage in bad weather, hitting hazards such as rocks and running aground in shallow waters if they are too big.
+- The Player’s Boat is used to sail the seas. The Player can only control one boat at a time. No matter the size of the boat, only The Player will be needed to man it.
+- When The Player is onboard The Boat, it acts as an extended inventory. Ranged weapons will draw their ammo supply from The Boat’s hold; if The Boat has 50 bullets on board, The Player can shoot 50 bullets etc.
+- When The Player boards The Boat, their ammo is immediately placed into The Boat’s hold. When they leave, some ammo is placed into their inventory from the hold.
+- Boats are immune to small arms fire like muskets and arrows, but can take damage from cannonballs and are susceptible to fire. They can also take damage in bad weather, hitting hazards such as rocks and running aground in shallow waters if they are too big.
 
 
 Boat Type
@@ -225,26 +225,27 @@ A good choice for taking on The Kraken. But be warned, the Kraken will be more l
 
 
 
-The Ocean (and the landmasses within it)
+## The Ocean (and the landmasses within it)
+
 The Ocean will be a dangerous place, full of mystery, pirates and treasures.
 
-The Ocean will have varied depths, preventing some ships from exploring those parts of the world.
-Shallow Waters will commonly be found near islands and landmasses, but may occasionally pop up in small patches far out at sea.
-Rocks are likely to spawn here, posing a risk to vessels.
-Coastal Waters will act as a merger between Shallow Waters and Deep Waters.
-Rocks will occasionally spawn here.
-Deep Waters will make up the majority of The Ocean.
-Pirates will mostly be found out here, on the hunt for loot and victims.
-Dark Waters are a dangerous place to be. If the Kraken is to be anywhere, it is likely to be found here.
-Tougher pirates will be found here.
+- The Ocean will have varied depths, preventing some ships from exploring those parts of the world.
+- Shallow Waters will commonly be found near islands and landmasses, but may occasionally pop up in small patches far out at sea.
+- Rocks are likely to spawn here, posing a risk to vessels.
+- Coastal Waters will act as a merger between Shallow Waters and Deep Waters.
+- Rocks will occasionally spawn here.
+- Deep Waters will make up the majority of The Ocean.
+- Pirates will mostly be found out here, on the hunt for loot and victims.
+- Dark Waters are a dangerous place to be. If the Kraken is to be anywhere, it is likely to be found here.
+- Tougher pirates will be found here.
 
-Coastal Towns
+## Coastal Towns
 
 Towns give The Player an opportunity to find quests for more money and rewards, or to find a place to trade, or a chance to repair their damaged vessel for a cost. Coastal towns are usually safe places to be, so they can give The Player a rest from hunting pirates to regain their health, heal The Duck and repair The Boat with their own resources without needing to pay anyone to do it for them.
 
 Towns may initially charge high prices for services and trading due to the ongoing state of the world. If The Player is able to defeat the pirates and enemies terrorizing the seas near the town, the cost of the services will reduce to a more affordable price.
 
-Shipwrecks, Ancient Ruins, Lighthouses and Other Points Of Interest
+## Shipwrecks, Ancient Ruins, Lighthouses and Other Points Of Interest
 
 These sites of interest will give The Player opportunities to explore and find rare loot such as unique weapons, Duck Ability Cards, big stashes of money and so on.
 
@@ -274,11 +275,11 @@ Gain three random abilities from which The Player needs to choose one. This will
 
 
 
-Friendlies
+## Friendlies
 
 Friendlies will help The Player and The Duck on their quest to slay The Kraken. They can offer quests and rewards, trade goods and repair equipment. Sometimes they may reveal a point of interest or give helpful advice if The Player talks to them. If they are under attack from an enemy and The Player steps in to save them, they will reward The Player with some money and information such as a point of interest.
 
-Enemies
+## Enemies
 
 Enemies will hinder The Player’s and The Duck’s progress. Defeating them will reward The Player with loot and money, and will give The Duck experience points needed to level up.
 
@@ -308,7 +309,7 @@ Anywhere there is water, but often on rocks or on the coast of an island. Do not
 
 
 
-The Kraken
+## The Kraken
 
 The Kraken is the biggest, meanest son-of-a-bitch in The Ocean. If you are not ready for him, he will kick your ass. Only the hardiest and most prepared players will have a chance of defeating it.
 
