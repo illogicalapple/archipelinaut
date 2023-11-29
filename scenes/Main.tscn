@@ -13,6 +13,21 @@
 render_priority = 0
 shader = ExtResource("2_5apy1")
 
+[sub_resource type="Animation" id="Animation_hehup"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DMGEffect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_n6mal"]
 resource_name = "damage"
 length = 0.2
@@ -27,21 +42,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_hehup"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DMGEffect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ykeoj"]
@@ -115,7 +115,9 @@ environment = SubResource("Environment_uk6hd")
 
 [node name="Ocean" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_nti32")
+volume_db = -10.0
 autoplay = true
+bus = &"SFX"
 
 [connection signal="damage" from="Things/Player" to="." method="_on_player_damage"]
 [connection signal="damage" from="Things/Player" to="GUI" method="_on_player_damage"]
