@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://m3xm8lo304ey"]
+[gd_scene load_steps=13 format=3 uid="uid://m3xm8lo304ey"]
 
 [ext_resource type="Script" path="res://scenes/Main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://brf8k5pgguil7" path="res://ui/GUI.tscn" id="2"]
@@ -7,15 +7,47 @@
 [ext_resource type="PackedScene" uid="uid://bnqk7bnhiixn3" path="res://friend/friend.tscn" id="3_nl7fy"]
 [ext_resource type="PackedScene" uid="uid://saxbimja6m45" path="res://mobs/pirate/evil_ship.tscn" id="4_0j337"]
 [ext_resource type="AudioStream" uid="uid://mtxykg6cud0j" path="res://sound/music/normal-v2.wav" id="4_xrkh0"]
-[ext_resource type="Shader" path="res://ui/blur.gdshader" id="6_jpl8f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m6d88"]
 render_priority = 0
 shader = ExtResource("2_5apy1")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_belyd"]
-shader = ExtResource("6_jpl8f")
-shader_parameter/lod = 1.774
+[sub_resource type="Animation" id="Animation_n6mal"]
+resource_name = "damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DMGEffect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hehup"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DMGEffect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ykeoj"]
+_data = {
+"RESET": SubResource("Animation_hehup"),
+"damage": SubResource("Animation_n6mal")
+}
 
 [sub_resource type="Environment" id="Environment_uk6hd"]
 glow_enabled = true
@@ -53,15 +85,22 @@ position = Vector2(8, -20)
 [node name="EvilShip" parent="Things" instance=ExtResource("4_0j337")]
 position = Vector2(1448, 408)
 
-[node name="PauseBlur" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_belyd")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DMGEffect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0)
+color = Color(1, 0.396078, 0.329412, 0.513726)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_ykeoj")
+}
 
 [node name="GUI" parent="." instance=ExtResource("2")]
 
@@ -74,4 +113,5 @@ bus = &"Music"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_uk6hd")
 
+[connection signal="damage" from="Things/Player" to="." method="_on_player_damage"]
 [connection signal="damage" from="Things/Player" to="GUI" method="_on_player_damage"]
