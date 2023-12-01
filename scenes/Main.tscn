@@ -14,7 +14,7 @@ colors = PackedColorArray(0.9239, 0.9239, 0.9239, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3cm3q"]
 seed = 845
-frequency = 0.0199
+frequency = 0.0106
 fractal_octaves = 3
 fractal_lacunarity = 0.435
 
@@ -28,8 +28,8 @@ noise = SubResource("FastNoiseLite_3cm3q")
 
 [sub_resource type="Gradient" id="Gradient_6lmrq"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.152174, 0.282609, 0.554348, 0.73913)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.741176, 1, 1, 1, 0, 0.235294, 0.384314, 0.87451, 0.211765, 0.235294, 0.384314, 0.87451, 0.427451)
+offsets = PackedFloat32Array(0.23913, 0.423913)
+colors = PackedColorArray(1, 1, 1, 1, 0.647059, 1, 1, 0)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l8kil"]
 frequency = 0.0152
@@ -48,7 +48,7 @@ shader = ExtResource("2_5apy1")
 shader_parameter/SPEED = 0.024
 shader_parameter/distort_strength = 0.337
 shader_parameter/direction = Vector2(1, 1)
-shader_parameter/UV_SCALE = Vector2(8, 8)
+shader_parameter/UV_SCALE = Vector2(12, 12)
 shader_parameter/water_noise = SubResource("NoiseTexture2D_h2yon")
 shader_parameter/distort_noise = SubResource("NoiseTexture2D_drn3o")
 

@@ -54,4 +54,5 @@ func _on_tree_gen_ready():
 		root.get_node("Things").add_child(tree_instance)
 	$TreeGen.queue_free()
 	generation_state += 1
-	if generation_state == 2: emit_signal("generated")
+	if generation_state == 2: 
+		emit_signal("generated")
