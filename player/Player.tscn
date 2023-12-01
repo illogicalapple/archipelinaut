@@ -122,7 +122,6 @@ grow_vertical = 2
 color = Color(1, 0.396078, 0.329412, 0.513726)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/DMGEffect"]
-root_node = NodePath("")
 reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_ykeoj")
