@@ -24,8 +24,7 @@ func get_polygon_area(polygon):
 	return area / 2.0
 
 func _ready():
-	$CanvasLayer/DMGEffect.modulate = Color.TRANSPARENT
-	Input.set_custom_mouse_cursor(cursor, 0, Vector2(16, 16))
+	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(16, 16))
 	randomize()
 	game_seed = randi() # change to a seed setting later
 	screen_size = get_viewport().get_visible_rect().size
@@ -36,12 +35,3 @@ func _ready():
 	await island_instance.generated
 	$GUI.loading_progress += 100
 
-func _process(delta):
-	$Camera.position = $Camera.position.lerp(player.position - screen_size / 2, delta * 8)
-
-
-func _on_player_damage(amount, show_effect):
-	if amount == 0: return
-	
-	if show_effect:
-		$CanvasLayer/AnimationPlayer.play("damage")

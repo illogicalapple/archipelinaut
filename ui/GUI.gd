@@ -27,7 +27,7 @@ func pause(event: InputEvent):
 	AudioServer.set_bus_volume_db(1, -5)
 	get_tree().paused = false
 	$Control/Pause.hide()
-	Input.set_custom_mouse_cursor(cursor, 0, Vector2(16, 16))
+	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(16, 16))
 
 func _ready():
 	var hints = $Control/Loading/Hint.get_meta("hints")

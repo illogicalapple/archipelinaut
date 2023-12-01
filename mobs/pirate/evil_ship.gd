@@ -32,7 +32,7 @@ func _process(delta):
 		$Flag.z_index = 0
 	things += delta * 2
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	angular_velocity = 0
 #	if not rotation == 0:
 #		$Bote.rotation = rotation
