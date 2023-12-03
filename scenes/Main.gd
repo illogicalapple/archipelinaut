@@ -34,4 +34,4 @@ func _ready():
 	island_instance.island_gen(0)
 	await island_instance.generated
 	$GUI.loading_progress += 100
-
+	%Player.a("thenetherpug is capping")

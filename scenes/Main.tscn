@@ -80,6 +80,7 @@ grow_vertical = 2
 y_sort_enabled = true
 
 [node name="Player" parent="Things" instance=ExtResource("3")]
+unique_name_in_owner = true
 position = Vector2(0, -25)
 
 [node name="Friend" parent="Things" instance=ExtResource("3_nl7fy")]

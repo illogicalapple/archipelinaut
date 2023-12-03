@@ -153,3 +153,6 @@ func damage(amount, show_effect) -> void:
 	if show_effect:
 		DmgEffectPlayer.play("damage")
 	return
+
+func a(hi):
+	print(hi)
