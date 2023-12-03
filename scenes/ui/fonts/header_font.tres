@@ -1,0 +1,7 @@
+[gd_resource type="FontFile" load_steps=2 format=3]
+
+[ext_resource type="FontFile" uid="uid://bepjl3k46ose5" path="res://scenes/ui/fonts/Inconsolata-Bold.ttf" id="1"]
+
+[resource]
+size = 54
+font_data = ExtResource( 1 )

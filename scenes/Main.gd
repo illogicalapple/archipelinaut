@@ -6,7 +6,7 @@ var screen_size := Vector2(0, 0)
 var game_seed: int
 var velocity = Vector2(0, 0)
 var device_id: int = 0
-var cursor = load("cursor.svg")
+var cursor = load("res://textures/ui/cursor.svg")
 var island_gen_done: bool = false
 var chunk_size: Vector2 = Vector2(1500, 1500) # must be square
 

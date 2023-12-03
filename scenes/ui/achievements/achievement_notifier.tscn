@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cshkmse804qux"]
+
+[ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://scenes/ui/fonts/theme.tres" id="1_6iwxv"]
+[ext_resource type="FontFile" uid="uid://bepjl3k46ose5" path="res://scenes/ui/fonts/Inconsolata-Bold.ttf" id="2_74jgo"]
+[ext_resource type="Script" path="res://scenes/ui/achievements/achievement_notifier.gd" id="3_0g6s4"]
+
+[node name="Achievement" type="RichTextLabel"]
+theme = ExtResource("1_6iwxv")
+theme_override_fonts/bold_font = ExtResource("2_74jgo")
+bbcode_enabled = true
+text = "[right]achievement made: [b][color=#b0ffca][boxer's fracture][/color][/b][/right]"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("3_0g6s4")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bcfd518l4w43w"]
 
-[ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://fonts/theme.tres" id="1_a5uxr"]
+[ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://scenes/ui/fonts/theme.tres" id="1_a5uxr"]
 [ext_resource type="Texture2D" uid="uid://dphlkneeu7cb8" path="res://scenes/menu/snazzier_title.png" id="1_bg5ly"]
 [ext_resource type="Shader" path="res://island/island.gdshader" id="2_ctilj"]
 

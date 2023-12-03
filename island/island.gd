@@ -2,7 +2,7 @@ class_name Island extends Area2D
 
 signal generated
 
-var tree_scene: PackedScene = load("res://objects/tree/tree.tscn")
+var tree_scene: PackedScene = load("res://entities/tree/tree.tscn")
 @onready var root = get_node("/root/Root")
 var generation_state: int = 0
 

@@ -3,7 +3,7 @@ extends Node
 signal achievement_change(name: String)
 signal modify_inventory
 
-var item_scene = preload("../objects/item.tscn")
+var item_scene = preload("../entities/item.tscn")
 var air = {
 	"type": "air",
 	"amount": 1

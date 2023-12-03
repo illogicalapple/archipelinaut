@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnqk7bnhiixn3"]
+
+[ext_resource type="Script" path="res://entities/friend/friend.gd" id="1_flxf4"]
+[ext_resource type="Texture2D" uid="uid://cqp5llng6xwm4" path="res://entities/friend/friend.svg" id="1_i5qin"]
+[ext_resource type="AudioStream" uid="uid://chut03yxooddc" path="res://sound/sfx/quack_sfx_2.mp3" id="3_knbdm"]
+
+[sub_resource type="Animation" id="Animation_2rsgs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_au63n"]
+resource_name = "friend_spin!!!"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r1lqe"]
+_data = {
+"RESET": SubResource("Animation_2rsgs"),
+"friend_spin!!!": SubResource("Animation_au63n")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f8vfp"]
+radius = 12.0
+height = 46.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rq0ms"]
+radius = 15.0
+height = 46.0
+
+[node name="Friend" type="CharacterBody2D"]
+position = Vector2(0, -20)
+collision_layer = 64
+script = ExtResource("1_flxf4")
+speed = 100.0
+min_distance = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_i5qin")
+
+[node name="SPINANIMATION" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r1lqe")
+}
+
+[node name="NeckCollisions" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(7, -4)
+shape = SubResource("CapsuleShape2D_f8vfp")
+
+[node name="BodyCollisions" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-4, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rq0ms")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_knbdm")
+
+[connection signal="animation_finished" from="SPINANIMATION" to="." method="_on_spinanimation_animation_finished"]

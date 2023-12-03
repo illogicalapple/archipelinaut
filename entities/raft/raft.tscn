@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf2eekcpiecss"]
+
+[ext_resource type="Script" path="res://entities/raft/raft.gd" id="1_dnvqn"]
+[ext_resource type="Texture2D" uid="uid://mje3w86echnb" path="res://entities/raft/raft.svg" id="2_rwobl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6r7ko"]
+size = Vector2(82, 77)
+
+[node name="Raft" type="RigidBody2D"]
+collision_layer = 32
+custom_integrator = true
+script = ExtResource("1_dnvqn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rwobl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_6r7ko")
