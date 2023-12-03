@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://m3xm8lo304ey"]
+[gd_scene load_steps=16 format=3 uid="uid://m3xm8lo304ey"]
 
 [ext_resource type="Script" path="res://scenes/Main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://brf8k5pgguil7" path="res://ui/GUI.tscn" id="2"]
@@ -9,31 +9,22 @@
 [ext_resource type="AudioStream" uid="uid://mtxykg6cud0j" path="res://sound/music/normal-v2.wav" id="4_xrkh0"]
 [ext_resource type="AudioStream" uid="uid://cd0geph2vnsim" path="res://sound/sfx/ocean_ambience_pixabay.mp3" id="8_nti32"]
 
-[sub_resource type="Gradient" id="Gradient_f6ps5"]
-colors = PackedColorArray(0.9239, 0.9239, 0.9239, 1, 1, 1, 1, 1)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hjy0l"]
+frequency = 0.0025
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_3cm3q"]
-seed = 845
-frequency = 0.0199
-fractal_octaves = 3
-fractal_lacunarity = 0.435
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_drn3o"]
-width = 1024
-height = 1024
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xm8yh"]
 seamless = true
 seamless_blend_skirt = 1.0
-color_ramp = SubResource("Gradient_f6ps5")
-noise = SubResource("FastNoiseLite_3cm3q")
+noise = SubResource("FastNoiseLite_hjy0l")
 
 [sub_resource type="Gradient" id="Gradient_6lmrq"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.152174, 0.282609, 0.554348, 0.73913)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.741176, 1, 1, 1, 0, 0.235294, 0.384314, 0.87451, 0.211765, 0.235294, 0.384314, 0.87451, 0.427451)
+offsets = PackedFloat32Array(0, 0.771739)
+colors = PackedColorArray(1, 1, 1, 0, 0.592157, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l8kil"]
-frequency = 0.0152
-fractal_octaves = 1
+frequency = 0.0097
+fractal_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h2yon"]
 width = 1024
@@ -46,11 +37,11 @@ noise = SubResource("FastNoiseLite_l8kil")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m6d88"]
 shader = ExtResource("2_5apy1")
 shader_parameter/SPEED = 0.024
-shader_parameter/distort_strength = 0.337
+shader_parameter/distort_strength = 0.658
 shader_parameter/direction = Vector2(1, 1)
-shader_parameter/UV_SCALE = Vector2(8, 8)
+shader_parameter/UV_SCALE = Vector2(12, 12)
 shader_parameter/water_noise = SubResource("NoiseTexture2D_h2yon")
-shader_parameter/distort_noise = SubResource("NoiseTexture2D_drn3o")
+shader_parameter/distort_noise = SubResource("NoiseTexture2D_xm8yh")
 
 [sub_resource type="Environment" id="Environment_uk6hd"]
 glow_enabled = true
