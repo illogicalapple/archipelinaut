@@ -1,0 +1,16 @@
+[gd_resource type="NoiseTexture2D" load_steps=3 format=3 uid="uid://dbehaqfnba00j"]
+
+[ext_resource type="FastNoiseLite" uid="uid://tcyupl120qpu" path="res://island/default_noise.tres" id="1_u7npj"]
+
+[sub_resource type="Gradient" id="Gradient_c3pbx"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.508197)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[resource]
+width = 1920
+height = 1080
+generate_mipmaps = false
+normalize = false
+color_ramp = SubResource("Gradient_c3pbx")
+noise = ExtResource("1_u7npj")

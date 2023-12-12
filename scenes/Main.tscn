@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://m3xm8lo304ey"]
+[gd_scene load_steps=11 format=3 uid="uid://m3xm8lo304ey"]
 
 [ext_resource type="Script" path="res://scenes/Main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://brf8k5pgguil7" path="res://scenes/ui/GUI.tscn" id="2"]
@@ -9,39 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://mtxykg6cud0j" path="res://sound/music/normal-v2.wav" id="4_xrkh0"]
 [ext_resource type="AudioStream" uid="uid://cd0geph2vnsim" path="res://sound/sfx/ocean_ambience_pixabay.mp3" id="8_nti32"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_hjy0l"]
-frequency = 0.0025
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xm8yh"]
-seamless = true
-seamless_blend_skirt = 1.0
-noise = SubResource("FastNoiseLite_hjy0l")
-
-[sub_resource type="Gradient" id="Gradient_6lmrq"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.771739)
-colors = PackedColorArray(1, 1, 1, 0, 0.592157, 1, 1, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_l8kil"]
-frequency = 0.0097
-fractal_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h2yon"]
-width = 1024
-height = 1024
-seamless = true
-seamless_blend_skirt = 1.0
-color_ramp = SubResource("Gradient_6lmrq")
-noise = SubResource("FastNoiseLite_l8kil")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m6d88"]
 shader = ExtResource("2_5apy1")
-shader_parameter/SPEED = 0.024
-shader_parameter/distort_strength = 0.658
-shader_parameter/direction = Vector2(1, 1)
-shader_parameter/UV_SCALE = Vector2(12, 12)
-shader_parameter/water_noise = SubResource("NoiseTexture2D_h2yon")
-shader_parameter/distort_noise = SubResource("NoiseTexture2D_xm8yh")
 
 [sub_resource type="Environment" id="Environment_uk6hd"]
 glow_enabled = true
@@ -53,7 +22,6 @@ process_priority = 100
 script = ExtResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 z_index = -4096
 material = SubResource("ShaderMaterial_m6d88")
 anchors_preset = 15
