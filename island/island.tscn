@@ -1,11 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://chamsft78cvcg"]
 
 [ext_resource type="Script" path="res://island/island.gd" id="1_176ci"]
+[ext_resource type="Shader" path="res://island/island.gdshader" id="2_q0asl"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2on7k"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_53u8x"]
-noise = SubResource("FastNoiseLite_2on7k")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vwwvi"]
+shader = ExtResource("2_q0asl")
 
 [node name="Island" type="Area2D"]
 z_index = -5
@@ -13,7 +12,11 @@ collision_mask = 0
 script = ExtResource("1_176ci")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("NoiseTexture2D_53u8x")
+material = SubResource("ShaderMaterial_vwwvi")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.156863)
 centered = false
 
 [node name="BoatCollisions" type="StaticBody2D" parent="."]

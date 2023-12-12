@@ -31,6 +31,6 @@ func _ready():
 	var island_instance = island.instantiate()
 	island_instance.position = Vector2.ZERO
 	$Islands.add_child(island_instance)
-	island_instance.island_gen(0)
+	island_instance.generate(randi())
 	await island_instance.generated
 	$GUI.loading_progress += 100

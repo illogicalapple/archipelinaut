@@ -4,8 +4,8 @@
 
 [sub_resource type="Gradient" id="Gradient_c3pbx"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.508197)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.355372, 0.694215)
+colors = PackedColorArray(0, 0, 0, 0, 0.669315, 0.669315, 0.669315, 0.494118, 1, 1, 1, 1)
 
 [resource]
 width = 1920

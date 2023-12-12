@@ -10,20 +10,20 @@ var generation_state: int = 0
 @onready var noise_texture : NoiseTexture2D = preload("res://island/noise_texture.tres")
 var noise_image : Image = null
 
-func island_gen(_game_seed):
+func generate(_game_seed):
 	fast_noise.seed = 0
 	$Sprite2D.texture = noise_texture
+	island_gen()
 
-func _on_island_gen_ready():
-	#return
+func island_gen():
 	await RenderingServer.frame_post_draw
 	var bitmap = BitMap.new()
-	bitmap.create_from_image_alpha(noise_texture.get_image())
+	bitmap.create_from_image_alpha(noise_texture.get_image(), 0.6)
 	await RenderingServer.frame_post_draw
 	var polygons = bitmap.opaque_to_polygons(Rect2(Vector2(0, 0), bitmap.get_size()))
 	
 	var debug_bitmap = ImageTexture.create_from_image(bitmap.convert_to_image())
-	$Sprite2D.texture = debug_bitmap
+	$Sprite2D2.texture = debug_bitmap
 	
 	for polygon in polygons:
 		var collider = CollisionPolygon2D.new()
@@ -32,8 +32,9 @@ func _on_island_gen_ready():
 		$BoatCollisions.add_child(collider.duplicate())
 	generation_state += 1
 	if generation_state == 2: emit_signal("generated")
+	return
 
-func _on_tree_gen_ready():
+func tree_gen():
 	await RenderingServer.frame_post_draw
 	var img: Image = noise_image
 	var bitmap = BitMap.new()
