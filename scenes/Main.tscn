@@ -12,8 +12,10 @@
 shader = ExtResource("2_5apy1")
 
 [sub_resource type="Environment" id="Environment_uk6hd"]
-glow_enabled = true
+background_mode = 3
 glow_normalized = true
+glow_intensity = 0.11
+glow_strength = 1.04
 glow_blend_mode = 0
 
 [node name="Root" type="Node"]

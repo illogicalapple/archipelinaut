@@ -47,7 +47,9 @@ func _on_tree_gen_ready():
 			if Geometry2D.is_point_in_polygon(candidate, polygon):
 				positions.append(candidate)
 				found += 1
-	for i in range(min(root.rng.randi_range(4, 6), len(positions))):
+	for i in range(min(root.rng.randi_range(12, 32), len(positions))):
+		if randi_range(0, 3) == 3:
+			continue
 		var tree_instance = tree_scene.instantiate()
 		var rand_index = root.rng.randi_range(0, len(positions) - 1)
 		tree_instance.position = positions[rand_index] + position

@@ -30,6 +30,7 @@ signal damaged(amount: float, show_effect: bool)
 
 @onready var Sprite : Sprite2D = $Sprite
 @onready var Stamina : TextureProgressBar = $HUD/Stamina
+@onready var lilshake : Timer = $LilShakeTimer
 @onready var Hurtbox : Area2D = $Hurtbox
 @onready var ItemHolding : CharacterBody2D = $ItemHolding
 @onready var Footsteps : AudioStreamPlayer2D = $Footsteps
@@ -61,6 +62,8 @@ func _process(delta) -> void:
 	
 	var direction : Vector2 = Input.get_vector("move_left_0", "move_right_0", "move_up_0", "move_down_0")
 	
+	
+	
 	velocity += direction
 	velocity = velocity.lerp(Vector2(0, 0), delta * 8 * (int(in_water) * 1.1 + 1))
 	position += velocity * delta / 0.02
@@ -77,6 +80,17 @@ func _process(delta) -> void:
 		Stamina.value = breath_left * 10
 		if breath_left <= 0:
 			dps = 10
+			
+	if direction and lilshake.is_stopped():
+		lilshake.start()
+		var value = 8
+		if in_water:
+			value = 3
+		
+		var rotation_tween := create_tween()
+		rotation_tween.tween_property(Sprite, "rotation_degrees", value, 0.1)
+		rotation_tween.tween_property(Sprite, "rotation_degrees", -value, 0.2)
+		rotation_tween.tween_property(Sprite, "rotation_degrees", 0, 0.1)
 
 	# Audio
 	

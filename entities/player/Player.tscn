@@ -65,6 +65,10 @@ land_texture = ExtResource("1")
 wait_time = 0.5
 autostart = true
 
+[node name="LilShakeTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [node name="Reach" type="Area2D" parent="."]
 collision_layer = 1024
 collision_mask = 0
@@ -87,10 +91,12 @@ texture = ExtResource("1")
 position = Vector2(15, 13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -1)
 shape = SubResource("1")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, 2.5)
 collision_layer = 4
 
@@ -144,6 +150,7 @@ texture_progress = ExtResource("5_8nacs")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="DPS" to="." method="_on_dps_timeout"]
+[connection signal="timeout" from="LilShakeTimer" to="." method="_on_dps_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="area_exited" from="Hurtbox" to="." method="_on_Hurtbox_area_exited"]
 [connection signal="finished" from="Footsteps" to="." method="_on_footsteps_finished"]
