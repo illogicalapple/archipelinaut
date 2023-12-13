@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://chamsft78cvcg"]
+[gd_scene load_steps=8 format=3 uid="uid://chamsft78cvcg"]
 
 [ext_resource type="Script" path="res://island/island.gd" id="1_176ci"]
-[ext_resource type="Shader" path="res://island/island.gdshader" id="2_q0asl"]
+[ext_resource type="Shader" path="res://island/islandalpha.gdshader" id="2_47hsh"]
+[ext_resource type="Shader" path="res://island/island.gdshader" id="2_n00se"]
+[ext_resource type="Texture2D" uid="uid://dyjdcyw1sowoc" path="res://island/island.tres" id="4_7l7w2"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vwwvi"]
-shader = ExtResource("2_q0asl")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fg5dx"]
+shader = ExtResource("2_n00se")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w1jep"]
+shader = ExtResource("2_47hsh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f86ox"]
+shader = ExtResource("2_47hsh")
 
 [node name="Island" type="Area2D"]
 z_index = -5
@@ -12,12 +20,40 @@ collision_mask = 0
 script = ExtResource("1_176ci")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_vwwvi")
-centered = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.156863)
+material = SubResource("ShaderMaterial_fg5dx")
 centered = false
 
 [node name="BoatCollisions" type="StaticBody2D" parent="."]
 collision_mask = 0
+
+[node name="IslandGen" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+audio_listener_enable_2d = true
+positional_shadow_atlas_quad_0 = 0
+positional_shadow_atlas_quad_1 = 0
+positional_shadow_atlas_quad_2 = 0
+positional_shadow_atlas_quad_3 = 0
+size = Vector2i(3840, 2160)
+render_target_clear_mode = 1
+render_target_update_mode = 1
+
+[node name="Island" type="Sprite2D" parent="IslandGen"]
+material = SubResource("ShaderMaterial_w1jep")
+texture = ExtResource("4_7l7w2")
+centered = false
+
+[node name="TreeGen" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+audio_listener_enable_2d = true
+size = Vector2i(3840, 2160)
+render_target_update_mode = 1
+
+[node name="Island" type="Sprite2D" parent="TreeGen"]
+material = SubResource("ShaderMaterial_f86ox")
+texture = ExtResource("4_7l7w2")
+centered = false
+
+[connection signal="ready" from="IslandGen" to="." method="_on_island_gen_ready"]
+[connection signal="ready" from="TreeGen" to="." method="_on_tree_gen_ready"]

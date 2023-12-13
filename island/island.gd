@@ -2,41 +2,35 @@ class_name Island extends Area2D
 
 signal generated
 
-@onready var tree_scene: PackedScene = preload("res://entities/tree/tree.tscn")
+var tree_scene: PackedScene = load("res://entities/tree/tree.tscn")
 @onready var root = get_node("/root/Root")
 var generation_state: int = 0
 
-@onready var fast_noise : FastNoiseLite = preload("res://island/default_noise.tres")
-@onready var noise_texture : NoiseTexture2D = preload("res://island/noise_texture.tres")
-var noise_image : Image = null
-
 func generate(_game_seed):
-	fast_noise.seed = 0
-	$Sprite2D.texture = noise_texture
-	island_gen()
+	$IslandGen/Island.get_texture().noise.seed = _game_seed
+	$TreeGen/Island.get_texture().noise.seed = $IslandGen/Island.get_texture().noise.seed
 
-func island_gen():
+func _on_island_gen_ready():
+	await RenderingServer.frame_post_draw
+	var img = $IslandGen.get_texture().get_image()
+	var island_texture = $IslandGen/Island.texture
 	await RenderingServer.frame_post_draw
 	var bitmap = BitMap.new()
-	bitmap.create_from_image_alpha(noise_texture.get_image(), 0.6)
-	await RenderingServer.frame_post_draw
+	bitmap.create_from_image_alpha(img)
 	var polygons = bitmap.opaque_to_polygons(Rect2(Vector2(0, 0), bitmap.get_size()))
-	
-	var debug_bitmap = ImageTexture.create_from_image(bitmap.convert_to_image())
-	$Sprite2D2.texture = debug_bitmap
-	
+	$Sprite2D.texture = island_texture
 	for polygon in polygons:
 		var collider = CollisionPolygon2D.new()
 		collider.polygon = polygon
 		add_child(collider)
 		$BoatCollisions.add_child(collider.duplicate())
+	$IslandGen.queue_free()
 	generation_state += 1
 	if generation_state == 2: emit_signal("generated")
-	return
 
-func tree_gen():
+func _on_tree_gen_ready():
 	await RenderingServer.frame_post_draw
-	var img: Image = noise_image
+	var img: Image = $TreeGen.get_texture().get_image()
 	var bitmap = BitMap.new()
 	var positions = []
 	bitmap.create_from_image_alpha(img)
@@ -59,6 +53,7 @@ func tree_gen():
 		tree_instance.position = positions[rand_index] + position
 		positions.remove_at(rand_index)
 		root.get_node("Things").add_child(tree_instance)
+	$TreeGen.queue_free()
 	generation_state += 1
 	if generation_state == 2: 
 		emit_signal("generated")

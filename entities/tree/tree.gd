@@ -16,7 +16,9 @@ func _on_mouse_exited():
 	$Health.hide()
 	$PunchSFX.stop()
 
+
 func _process(_delta):
+	$Sprite2D.skew = sin(Time.get_ticks_msec() * 0.0008) * 0.15
 	if not $ChopTimer.is_stopped():
 		$Health.value = $ChopTimer.time_left * 30
 

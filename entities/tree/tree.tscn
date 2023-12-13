@@ -22,8 +22,9 @@ collision_mask = 1024
 script = ExtResource("1_1c5pm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -56)
+position = Vector2(0, 11)
 texture = ExtResource("1_eb0fj")
+offset = Vector2(0, -68)
 
 [node name="TrunkCollisions" type="CollisionShape2D" parent="."]
 position = Vector2(0, -48)

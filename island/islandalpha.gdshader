@@ -9,18 +9,7 @@ void fragment() {
 	if (brightness < 0.29) {
    
         discard;
-	} else if (brightness < 0.3 && brightness > 0.29) {
-        
-        COLOR = vec4(1.0);
-        
-    } else if (brightness < 0.3) {
-        
-        COLOR = vec4(1.0);
-        
-    } else if (brightness < 0.4) {
-        
-        COLOR = vec4(1.0);
-        
+		
     } else {
         
         COLOR = vec4(1.0);
