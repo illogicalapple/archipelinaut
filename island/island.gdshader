@@ -5,16 +5,13 @@ void fragment() {
     // Grab the brightness value of the noise texture to use for colouring. 
     // It doesn't matter which channel we use as long 
     float brightness = texture(TEXTURE, UV).r - abs(0.5 - UV.x) * 2.0 - abs(0.5 - UV.y) * 2.0;
-	float value = sin(TIME) * 0.1;
-	if (brightness < 0.18 + value) {
+	float value = sin(TIME) * 0.05;
+	if (brightness < 0.18 - value) {
         COLOR = vec4(0.4, 0.71, 0.83, 1.0);
 	
-	} else if (brightness < 0.29 && brightness > 0.2 - value) {
+	} else if (brightness < 0.29) {
    
         COLOR = vec4(0.45, 0.76, 0.88, 1.0);
-	} else if (brightness < 0.3 && brightness > 0.29) {
-        
-        COLOR = vec4(1.0);
         
     } else if (brightness < 0.3) {
         

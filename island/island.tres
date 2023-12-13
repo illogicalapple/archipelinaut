@@ -15,5 +15,6 @@ fractal_gain = 0.1
 resource_local_to_scene = true
 width = 3840
 height = 2160
+generate_mipmaps = false
 color_ramp = SubResource("Gradient_ajyqm")
 noise = SubResource("FastNoiseLite_cdstq")

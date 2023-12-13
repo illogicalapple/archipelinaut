@@ -40,7 +40,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="Things" instance=ExtResource("3")]
 unique_name_in_owner = true
-position = Vector2(0, -25)
+position = Vector2(1920, 1055)
 
 [node name="Friend" parent="Things" instance=ExtResource("3_nl7fy")]
 position = Vector2(8, -20)
