@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var player: CharacterBody2D = $"../Player"
-@onready var sine_offset: float = randf_range(0, 1)
+@onready var sine_offset: float = randf_range(0, 2)
 
 var active: bool = false
 
@@ -19,7 +19,7 @@ func _on_mouse_exited():
 
 
 func _process(_delta):
-	$Sprite2D.skew = sin(Time.get_ticks_msec() * 0.0008 + sine_offset) * 0.15
+	$Sprite2D.skew = sin(Time.get_ticks_msec() * 0.0008 + sine_offset) * 0.1
 	if not $ChopTimer.is_stopped():
 		$Health.value = $ChopTimer.time_left * 30
 
