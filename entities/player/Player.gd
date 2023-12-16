@@ -170,3 +170,6 @@ func damage(amount, show_effect) -> void:
 
 func a(hi):
 	print(hi)
+
+func _unhandled_input(event):
+	get_viewport().warp_mouse(Vector2(50, 50))
