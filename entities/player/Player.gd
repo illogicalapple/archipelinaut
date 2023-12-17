@@ -172,5 +172,19 @@ func a(hi):
 	print(hi)
 
 func _unhandled_input(event):
-	return
-	get_viewport().warp_mouse(Vector2(50, 50))
+	if event.is_action_pressed("attack_0"):# and global.inventory[global.active_id].type == "wood_sword":
+		$SwordSwing.show()
+		$ItemHolding.hide()
+		$SwordSwing.clear_points()
+		$SwordSwing.width = 10
+		print(get_viewport().get_mouse_position())
+		print(screen_size / 2)
+		var starting_angle = (screen_size / 2).angle_to(get_viewport().get_mouse_position())
+		print(starting_angle)
+		for i in range(15):
+			$SwordSwing.add_point(Vector2(cos(deg_to_rad(i * 12) + starting_angle), sin(deg_to_rad(i * 12) + starting_angle)) * 40)
+			$SwordSwing.width += 0.5
+			await RenderingServer.frame_post_draw
+		await get_tree().create_timer(0.2).timeout
+		$SwordSwing.hide()
+		$ItemHolding.show()
