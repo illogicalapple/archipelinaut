@@ -10,8 +10,13 @@ var cursor = preload("res://textures/ui/cursor.svg")
 func pause(event: InputEvent):
 	if not event.is_action_pressed("ui_pause"): return
 	
+	if not %Options.screen_open == %Default:
+		%Options.open_screen(%Default)
+		$SFXBack.play()
+		return
+	
 	paused = not paused
-	$Control/Pause/Default/Options.open_screen($Control/Pause/Default)
+	
 	if paused:
 		AudioServer.set_bus_effect_enabled(1, 0, true)
 		AudioServer.set_bus_volume_db(1, -7)
@@ -20,7 +25,9 @@ func pause(event: InputEvent):
 		Input.set_custom_mouse_cursor(null)
 		$Control/Pause.show()
 		return
-	for child in $Control/Pause/Default/Options.get_children():
+		
+	for child in %Options.get_children():
+		if not child is Label: break
 		(child as Label).add_theme_font_size_override("font_size", 56)
 	$Control/BGBlur.hide()
 	AudioServer.set_bus_effect_enabled(1, 0, false)

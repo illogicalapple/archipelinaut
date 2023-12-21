@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+@onready var screen_open: Control = %Default
+
 func tween(node, property, new_value, duration):
 	var thing = get_tree().create_tween()
 	thing.set_ease(Tween.EASE_IN_OUT)
@@ -7,6 +9,7 @@ func tween(node, property, new_value, duration):
 	thing.tween_property(node, property, new_value, duration)
 
 func open_screen(screen: Control):
+	screen_open = screen
 	for child in get_parent().get_parent().get_children():
 		child.hide()
 	screen.show()
@@ -31,5 +34,6 @@ func _on_quit_mouse_exited():
 
 func _on_achievements_gui_input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
+		$SFX.play()
 		_on_achievements_mouse_exited()
 		open_screen(get_parent().get_parent().get_node("Achievements"))

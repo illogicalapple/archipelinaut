@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://brf8k5pgguil7"]
+[gd_scene load_steps=20 format=3 uid="uid://brf8k5pgguil7"]
 
 [ext_resource type="Shader" path="res://scenes/ui/blur.gdshader" id="2_xyeow"]
 [ext_resource type="Script" path="res://scenes/ui/GUI.gd" id="3"]
@@ -9,7 +9,9 @@
 [ext_resource type="Script" path="res://scenes/ui/options.gd" id="7_p20rs"]
 [ext_resource type="FontFile" path="res://scenes/ui/fonts/header_font.tres" id="8_f6fgs"]
 [ext_resource type="Script" path="res://scenes/ui/achievements/Achievements.gd" id="9_3ppbk"]
+[ext_resource type="AudioStream" uid="uid://dcjm3wuuali33" path="res://sound/sfx/menu_transition.mp3" id="9_rmeif"]
 [ext_resource type="FontFile" uid="uid://bepjl3k46ose5" path="res://scenes/ui/fonts/Inconsolata-Bold.ttf" id="10_35hyn"]
+[ext_resource type="AudioStream" uid="uid://cgcbm7ewt6xbl" path="res://sound/sfx/menu_select.mp3" id="12_dmkin"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g7ys4"]
 shader = ExtResource("2_xyeow")
@@ -123,6 +125,7 @@ mouse_filter = 1
 color = Color(0, 0, 0, 0.643137)
 
 [node name="Default" type="Control" parent="Control/Pause"]
+unique_name_in_owner = true
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -141,6 +144,7 @@ grow_horizontal = 0
 texture = ExtResource("5")
 
 [node name="Options" type="VBoxContainer" parent="Control/Pause/Default"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 160.0
 offset_top = 160.0
@@ -169,6 +173,9 @@ mouse_filter = 0
 theme_override_fonts/font = ExtResource("8_f6fgs")
 theme_override_font_sizes/font_size = 56
 text = "quit game"
+
+[node name="SFX" type="AudioStreamPlayer" parent="Control/Pause/Default/Options"]
+stream = ExtResource("9_rmeif")
 
 [node name="Achievements" type="Control" parent="Control/Pause"]
 visible = false
@@ -264,6 +271,9 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "[dead]"
 label_settings = SubResource("LabelSettings_2h2hv")
+
+[node name="SFXBack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_dmkin")
 
 [connection signal="mouse_entered" from="Control/Pause/Default/Options/Settings" to="Control/Pause/Default/Options" method="_on_settings_mouse_entered"]
 [connection signal="mouse_exited" from="Control/Pause/Default/Options/Settings" to="Control/Pause/Default/Options" method="_on_settings_mouse_exited"]
