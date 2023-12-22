@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3sk6lwmmxpa"]
+[gd_scene load_steps=6 format=3 uid="uid://c3sk6lwmmxpa"]
 
 [ext_resource type="Texture2D" uid="uid://cb0roq0qd2ve3" path="res://scenes/ui/inventory/hotbar_square.svg" id="1_ltmi5"]
+[ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://scenes/ui/fonts/theme.tres" id="1_nrl5r"]
 [ext_resource type="Script" path="res://scenes/ui/inventory/hotbar_slot.gd" id="2_hfkkw"]
 [ext_resource type="Texture2D" uid="uid://dh2yt4tepgk4d" path="res://scenes/ui/inventory/selected.svg" id="4_xayrr"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsskd"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0, 0, 0, 0.505882)
+
 [node name="HotbarSlot" type="TextureButton"]
+theme = ExtResource("1_nrl5r")
 keep_pressed_outside = true
 texture_normal = ExtResource("1_ltmi5")
 script = ExtResource("2_hfkkw")
@@ -21,6 +30,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Amount" type="Label" parent="."]
 layout_mode = 0
@@ -44,6 +54,26 @@ visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 texture = ExtResource("4_xayrr")
 
+[node name="Information" type="RichTextLabel" parent="."]
+visible = false
+z_index = 100
+layout_mode = 0
+offset_left = 33.0
+offset_top = 34.0
+offset_right = 292.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsskd")
+bbcode_enabled = true
+text = "[b][color=7EE3A0]wooden sword[/color][/b]
+literally just a stick"
+fit_content = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

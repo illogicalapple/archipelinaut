@@ -23,7 +23,7 @@ func _unhandled_input(event):
 	if item_holding.type == "air":
 		if event.is_action_pressed("inventory_0"):
 			inventory_open = not inventory_open
-			$Top/Inventory.visible = inventory_open
+			$Top.visible = inventory_open
 			return
 		for i in range(5):
 			if event.is_action_pressed("hotbar_" + str(i)):
@@ -36,5 +36,5 @@ func item_in_hand_changed():
 
 func _ready():
 	global.modify_inventory.connect(item_in_hand_changed)
-	$Top/Inventory.hide()
+	$Top.hide()
 	active_id = 0

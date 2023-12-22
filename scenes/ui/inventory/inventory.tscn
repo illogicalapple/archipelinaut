@@ -15,12 +15,14 @@ anchor_bottom = 1.0
 offset_top = -424.0
 offset_right = 535.0
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/separation = 40
 alignment = 2
 script = ExtResource("1_udjei")
 
 [node name="Top" type="HBoxContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 80
 
 [node name="Inventory" type="GridContainer" parent="Top"]

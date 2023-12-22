@@ -41,7 +41,17 @@ func _process(_delta):
 		else:
 			$Amount.show()
 			$Amount.text = str(global.inventory[id].amount)
+	$Information.position = get_local_mouse_position()
 
 func set_item_moving(new_item_moving):
 	if new_item_moving: inventory.id_moving = id
 	item_moving = new_item_moving
+
+
+func _on_mouse_entered():
+	if item == "air": return
+	$Information.text = "[b][color=7EE3A0]{name}[/color][/b]\n{description}".format(behavior.info[item])
+	$Information.show()
+
+func _on_mouse_exited():
+	$Information.hide()

@@ -29,6 +29,7 @@ VScrollBar/styles/scroll = SubResource("StyleBoxLine_gel4g")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_1kowr")
 
 [node name="Crafting" type="ScrollContainer"]
+clip_contents = false
 offset_right = 83.0
 offset_bottom = 267.0
 theme = SubResource("Theme_nl3dj")
