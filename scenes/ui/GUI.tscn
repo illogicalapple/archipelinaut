@@ -272,6 +272,17 @@ grow_vertical = 2
 text = "[dead]"
 label_settings = SubResource("LabelSettings_2h2hv")
 
+[node name="Commands" type="TextEdit" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+placeholder_text = "insert command here..."
+
 [node name="SFXBack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_dmkin")
 
@@ -282,3 +293,4 @@ stream = ExtResource("12_dmkin")
 [connection signal="mouse_exited" from="Control/Pause/Default/Options/Achievements" to="Control/Pause/Default/Options" method="_on_achievements_mouse_exited"]
 [connection signal="mouse_entered" from="Control/Pause/Default/Options/Quit" to="Control/Pause/Default/Options" method="_on_quit_mouse_entered"]
 [connection signal="mouse_exited" from="Control/Pause/Default/Options/Quit" to="Control/Pause/Default/Options" method="_on_quit_mouse_exited"]
+[connection signal="gui_input" from="Control/Commands" to="." method="_on_commands_gui_input"]

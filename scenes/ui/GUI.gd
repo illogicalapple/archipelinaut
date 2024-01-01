@@ -61,3 +61,11 @@ func set_loading_progress(new_progress):
 	$Control/Loading/VBoxContainer/ProgressBar.value = new_progress
 	if new_progress >= 99:
 		$Control/Loading.hide()
+
+
+func _on_commands_gui_input(event: InputEvent):
+	if event.is_action_pressed(""):
+		var text: Array[String] = ($Control/Commands.text as String).split(" ")
+		if text[0] == "give":
+			global.pick_up(text[1], text[2])
+		$Control/Commands.clear()
