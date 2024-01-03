@@ -10,6 +10,7 @@ var walk_sfx: Dictionary = {
 	"grass": preload("res://sound/sfx/grasswalk2sfx.mp3"),
 	"water": preload("res://sound/sfx/walkwater2sfx.wav")
 }
+var facing_x = 1
 
 var item_holding
 
@@ -24,7 +25,7 @@ signal damaged(amount: float, show_effect: bool)
 @export var land_texture = Texture2D.new()
 
 
-# CACHED NODES
+#region CACHED NODES
 # Nodes cached so that it will not need to constantly get it
 # any time it needs to be used, instead it's all here.
 
@@ -37,6 +38,8 @@ signal damaged(amount: float, show_effect: bool)
 @onready var Reach : Area2D = $Reach
 @onready var DmgEffectPlayer : AnimationPlayer = $HUD/DMGEffect/AnimationPlayer
 @onready var DmgEffect : ColorRect = $HUD/DMGEffect
+
+#endregion
 
 # WATER CHECK
 
@@ -59,16 +62,21 @@ func _ready() -> void:
 	return
 
 func _process(delta) -> void:
-	
 	var direction : Vector2 = Input.get_vector("move_left_0", "move_right_0", "move_up_0", "move_down_0")
-	
-	
+	var old_facing_x = facing_x
+	facing_x = sign(velocity.x + old_facing_x / 100000000)
 	
 	velocity += direction
 	velocity = velocity.lerp(Vector2(0, 0), delta * 8 * (int(in_water) * 1.1 + 1))
 	position += velocity * delta / 0.02
 	
-	ItemHolding.position.x = sign(velocity.x + 0.0000000001) * 15
+	if old_facing_x != facing_x:
+		var flip_tween := get_tree().create_tween()
+		Sprite.scale.x = -1
+		flip_tween.tween_property(Sprite, "scale", Vector2(1, 1), 0.1)
+	
+	var sword_tween := get_tree().create_tween()
+	sword_tween.tween_property(ItemHolding, "position", Vector2(facing_x * 15, 13), 0.1)
 	ItemHolding.rotation = ItemHolding.old_rot * sign(velocity.x + 0.0000000001)
 	
 	
@@ -130,10 +138,10 @@ func _on_dps_timeout() -> void:
 	return
 
 # DEBUG
-func _input(event) -> void: # DEBUG
-	if event.is_action_pressed("hotbar_4"):
-		_on_Hurtbox_area_entered(root.get_node("Islands/Island"))
-	return
+#func _input(event) -> void: # DEBUG
+	#if event.is_action_pressed("hotbar_4"):
+		#_on_Hurtbox_area_entered(root.get_node("Islands/Island"))
+	#return
 
 # REACH
 func reload_reach() -> void:
@@ -172,7 +180,7 @@ func a(hi):
 	print(hi)
 
 func _unhandled_input(event):
-	if event.is_action_pressed("attack_0"):# and global.inventory[global.active_id].type == "wood_sword":
+	if event.is_action_pressed("attack_0") and global.inventory[global.active_id].type == "wood_sword":
 		$SwordSwing.show()
 		$ItemHolding.hide()
 		$SwordSwing.clear_points()

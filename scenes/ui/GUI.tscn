@@ -273,6 +273,7 @@ text = "[dead]"
 label_settings = SubResource("LabelSettings_2h2hv")
 
 [node name="Commands" type="TextEdit" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

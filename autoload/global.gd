@@ -8,6 +8,8 @@ var air = {
 	"type": "air",
 	"amount": 1
 }
+
+## inventory: stores items in the form of {type: str, amount: int}
 var inventory: Array = [
 	air, air, air, air, air,
 	air, air, air, air, air,
@@ -15,6 +17,8 @@ var inventory: Array = [
 	air, air, air, air, air
 ] # very empty inventory
 
+## achievements ([NAME, DESCRIPTION, COMPLETED?])
+## consider moving to a resource file later
 var achievements = { # [NAME, DESCRIPTION, COMPLETED?]
 	"punch_tree": ["boxer's fracture", "punch a tree", false],
 	"friend_spin": ["the duck dance", "make your FRIEND SPIN", false],
@@ -27,11 +31,13 @@ var active_id: int:
 		active_id = aaa
 		modify_inventory.emit()
 
+## gain achievement (don't confuse with `achievements`)
 func achievement(id):
 	if(achievements[id][2]): return
 	achievements[id][2] = true
 	emit_signal("achievement_change", id)
 
+## removes item from inventory
 func bye(item, amount):
 	var i1 = 0
 	for i in inventory:
@@ -69,6 +75,8 @@ func pick_up(item, amount):
 		emit_signal("modify_inventory")
 		return true
 
+## drops an item at position pos
+## @deprecated
 func drop(item, amount, pos):
 	var item_instance = item_scene.instantiate()
 	item_instance.item = item

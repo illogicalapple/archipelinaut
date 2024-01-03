@@ -18,7 +18,7 @@ func pause(event: InputEvent):
 	paused = not paused
 	
 	if paused:
-		AudioServer.set_bus_effect_enabled(1, 0, true)
+		AudioServer.set_bus_effect_enabled(1, 0, true) # low pass filter
 		AudioServer.set_bus_volume_db(1, -7)
 		get_tree().set_deferred("paused", true)
 		$Control/BGBlur.show()
@@ -53,7 +53,7 @@ func _input(event):
 func damage(amount: float, _show_effect: bool = true):
 	health -= amount
 
-func _on_player_damage(amount, _show_effect):
+func _on_player_deamage(amount, _show_effect):
 	damage(amount)
 
 func set_loading_progress(new_progress):
