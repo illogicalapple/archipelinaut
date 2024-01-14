@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://scenes/ui/fonts/theme.tres" id="1_a5uxr"]
 [ext_resource type="Texture2D" uid="uid://dphlkneeu7cb8" path="res://scenes/menu/snazzier_title.png" id="1_bg5ly"]
 [ext_resource type="Shader" path="res://island/island.gdshader" id="2_ctilj"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="2_tsg20"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kwfgg"]
 shader = ExtResource("2_ctilj")
@@ -16,9 +17,6 @@ width = 1920
 height = 1080
 noise = SubResource("FastNoiseLite_an50d")
 
-[sub_resource type="LabelSettings" id="LabelSettings_nyqaq"]
-font_size = 96
-
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -27,8 +25,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_a5uxr")
+script = ExtResource("2_tsg20")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_kwfgg")
 layout_mode = 1
 anchors_preset = 8
@@ -43,43 +42,80 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 texture = SubResource("NoiseTexture2D_xj68o")
 
-[node name="ColorRect" type="ColorRect" parent="TextureRect2"]
+[node name="ColorRect" type="ColorRect" parent="Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 145.5
+offset_top = 53.5
+offset_right = 145.5
+offset_bottom = 53.5
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.4)
+color = Color(0, 0, 0, 0.101961)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 160.0
-offset_top = 160.0
-offset_right = 1460.0
-offset_bottom = 562.344
-texture = ExtResource("1_bg5ly")
-expand_mode = 5
-stretch_mode = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Title" type="TextureRect" parent="."]
 layout_mode = 1
-offset_left = 624.0
-offset_top = 464.0
-offset_right = 1104.0
-offset_bottom = 569.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -433.0
+offset_top = -292.0
+offset_right = 430.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bg5ly")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.0
+offset_top = -77.0
+offset_right = 259.0
+offset_bottom = 237.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="start" type="Button" parent="Buttons"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.737255, 1, 0.996078, 1)
+theme_override_colors/font_outline_color = Color(0, 0.258824, 0.427451, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 64
 text = "start game"
-label_settings = SubResource("LabelSettings_nyqaq")
+flat = true
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="options" type="Button" parent="Buttons"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.737255, 1, 0.996078, 1)
+theme_override_colors/font_outline_color = Color(0, 0.258824, 0.427451, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 64
 text = "options"
-label_settings = SubResource("LabelSettings_nyqaq")
+flat = true
 
-[node name="Label3" type="Label" parent="VBoxContainer"]
+[node name="quit" type="Button" parent="Buttons"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.737255, 1, 0.996078, 1)
+theme_override_colors/font_outline_color = Color(0, 0.258824, 0.427451, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 64
 text = "quit game"
-label_settings = SubResource("LabelSettings_nyqaq")
+flat = true
+
+[connection signal="pressed" from="Buttons/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Buttons/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Buttons/quit" to="." method="_on_quit_pressed"]
