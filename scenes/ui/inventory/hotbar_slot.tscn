@@ -4,13 +4,7 @@
 [ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://scenes/ui/fonts/theme.tres" id="1_nrl5r"]
 [ext_resource type="Script" path="res://scenes/ui/inventory/hotbar_slot.gd" id="2_hfkkw"]
 [ext_resource type="Texture2D" uid="uid://dh2yt4tepgk4d" path="res://scenes/ui/inventory/selected.svg" id="4_xayrr"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsskd"]
-content_margin_left = 16.0
-content_margin_top = 16.0
-content_margin_right = 16.0
-content_margin_bottom = 16.0
-bg_color = Color(0, 0, 0, 0.505882)
+[ext_resource type="StyleBox" uid="uid://biir2y06oky6c" path="res://misc_components/ui_resources/panel_bg.tres" id="5_rp3w3"]
 
 [node name="HotbarSlot" type="TextureButton"]
 theme = ExtResource("1_nrl5r")
@@ -68,7 +62,7 @@ offset_bottom = 110.0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 16
 theme_override_font_sizes/bold_font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_dsskd")
+theme_override_styles/normal = ExtResource("5_rp3w3")
 bbcode_enabled = true
 text = "[b][color=7EE3A0]wooden sword[/color][/b]
 literally just a stick"

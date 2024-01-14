@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c08g4pan38n7l"]
+[gd_scene load_steps=16 format=3 uid="uid://c08g4pan38n7l"]
 
 [ext_resource type="Texture2D" uid="uid://wlqjc32sx6re" path="res://entities/player/player.svg" id="1"]
 [ext_resource type="Script" path="res://entities/player/Player.gd" id="2"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dn7m5bwfw144p" path="res://entities/player/hands/item_holding.tscn" id="4_wsuh7"]
 [ext_resource type="Texture2D" uid="uid://csdnwrhkmnn0o" path="res://entities/player/stamina.svg" id="5_8nacs"]
 [ext_resource type="AudioStream" uid="uid://dmfp2v15yrp4a" path="res://sound/sfx/grasswalk2sfx.mp3" id="8_4poe5"]
+[ext_resource type="PackedScene" uid="uid://ptpktsvsx3t5" path="res://misc_components/dialogue.tscn" id="9_k48tw"]
 
 [sub_resource type="Curve" id="Curve_tprhh"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -162,6 +163,12 @@ fill_mode = 4
 texture_under = ExtResource("4_ror7t")
 texture_progress = ExtResource("5_8nacs")
 metadata/_edit_use_anchors_ = true
+
+[node name="Dialogue" parent="." instance=ExtResource("9_k48tw")]
+offset_left = 42.0
+offset_top = -146.0
+offset_right = 82.0
+offset_bottom = -106.0
 
 [connection signal="timeout" from="DPS" to="." method="_on_dps_timeout"]
 [connection signal="timeout" from="LilShakeTimer" to="." method="_on_dps_timeout"]

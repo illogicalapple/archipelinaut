@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://ptpktsvsx3t5"]
+
+[ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://scenes/ui/fonts/theme.tres" id="1_mgjat"]
+[ext_resource type="StyleBox" uid="uid://biir2y06oky6c" path="res://misc_components/ui_resources/panel_bg.tres" id="2_ct7ss"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 181.0
+offset_bottom = 111.0
+theme = ExtResource("1_mgjat")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 1000
+layout_mode = 0
+offset_right = 174.0
+offset_bottom = 115.0
+theme_override_constants/separation = -12
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_styles/normal = ExtResource("2_ct7ss")
+bbcode_enabled = true
+text = "Howdy, I'm [b][color=7EE3A0]Dude[/color][/b]! [b][color=7EE3A0]Dude[/color][/b] the dude! Golly, you're new to the [b][color=7EE3A0]underground[/color][/b], aren't you?"
+fit_content = true
