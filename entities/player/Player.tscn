@@ -167,8 +167,8 @@ metadata/_edit_use_anchors_ = true
 [node name="Dialogue" parent="." instance=ExtResource("9_k48tw")]
 offset_left = 42.0
 offset_top = -146.0
-offset_right = 82.0
-offset_bottom = -106.0
+offset_right = 215.0
+offset_bottom = -6.0
 
 [connection signal="timeout" from="DPS" to="." method="_on_dps_timeout"]
 [connection signal="timeout" from="LilShakeTimer" to="." method="_on_dps_timeout"]

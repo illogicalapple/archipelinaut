@@ -1,27 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://ptpktsvsx3t5"]
+[gd_scene load_steps=6 format=3 uid="uid://ptpktsvsx3t5"]
 
 [ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://scenes/ui/fonts/theme.tres" id="1_mgjat"]
 [ext_resource type="StyleBox" uid="uid://biir2y06oky6c" path="res://misc_components/ui_resources/panel_bg.tres" id="2_ct7ss"]
+[ext_resource type="Script" path="res://misc_components/dialogue.gd" id="3_7ks1f"]
+[ext_resource type="AudioStream" uid="uid://vw0u5l5wye2k" path="res://sound/sfx/keyboard.mp3" id="4_n5s3j"]
 
-[node name="Dialogue" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 181.0
-offset_bottom = 111.0
-theme = ExtResource("1_mgjat")
+[sub_resource type="LabelSettings" id="LabelSettings_kyinp"]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-z_index = 1000
-layout_mode = 0
+[node name="RichTextLabel" type="RichTextLabel"]
+visible = false
+z_index = 4096
+z_as_relative = false
+clip_contents = false
 offset_right = 174.0
-offset_bottom = 115.0
-theme_override_constants/separation = -12
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
-layout_mode = 2
+offset_bottom = 140.0
+theme = ExtResource("1_mgjat")
 theme_override_font_sizes/normal_font_size = 16
 theme_override_font_sizes/bold_font_size = 16
 theme_override_styles/normal = ExtResource("2_ct7ss")
 bbcode_enabled = true
 text = "Howdy, I'm [b][color=7EE3A0]Dude[/color][/b]! [b][color=7EE3A0]Dude[/color][/b] the dude! Golly, you're new to the [b][color=7EE3A0]underground[/color][/b], aren't you?"
 fit_content = true
+script = ExtResource("3_7ks1f")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_top = -20.0
+offset_right = 126.0
+offset_bottom = -2.0
+text = "[space]"
+label_settings = SubResource("LabelSettings_kyinp")
+vertical_alignment = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_n5s3j")
+volume_db = 24.0
