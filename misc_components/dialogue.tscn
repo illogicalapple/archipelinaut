@@ -1,23 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://ptpktsvsx3t5"]
+[gd_scene load_steps=8 format=3 uid="uid://ptpktsvsx3t5"]
 
 [ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://scenes/ui/fonts/theme.tres" id="1_mgjat"]
-[ext_resource type="StyleBox" uid="uid://biir2y06oky6c" path="res://misc_components/ui_resources/panel_bg.tres" id="2_ct7ss"]
+[ext_resource type="FontFile" uid="uid://bepjl3k46ose5" path="res://scenes/ui/fonts/Inconsolata-Bold.ttf" id="3_2p2nh"]
 [ext_resource type="Script" path="res://misc_components/dialogue.gd" id="3_7ks1f"]
 [ext_resource type="AudioStream" uid="uid://cgcbm7ewt6xbl" path="res://sound/sfx/menu_select.mp3" id="4_laqiv"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oq31a"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+bg_color = Color(0, 0, 0, 0.505882)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pp0te"]
+bg_color = Color(0, 0, 0, 0.505882)
+
 [sub_resource type="LabelSettings" id="LabelSettings_kyinp"]
+font_size = 32
+font_color = Color(0.494118, 0.890196, 0.627451, 1)
 
 [node name="RichTextLabel" type="RichTextLabel"]
 visible = false
 z_index = 4096
 z_as_relative = false
 clip_contents = false
+custom_minimum_size = Vector2(288, 0)
 offset_right = 174.0
 offset_bottom = 140.0
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("1_mgjat")
-theme_override_font_sizes/normal_font_size = 16
-theme_override_font_sizes/bold_font_size = 16
-theme_override_styles/normal = ExtResource("2_ct7ss")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_oq31a")
 bbcode_enabled = true
 text = "Howdy, I'm [b][color=7EE3A0]Dude[/color][/b]! [b][color=7EE3A0]Dude[/color][/b] the dude! Golly, you're new to the [b][color=7EE3A0]underground[/color][/b], aren't you?"
 fit_content = true
@@ -25,9 +39,11 @@ script = ExtResource("3_7ks1f")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-offset_top = -20.0
-offset_right = 126.0
-offset_bottom = -2.0
+offset_top = -34.0
+offset_right = 116.0
+offset_bottom = 1.0
+theme_override_fonts/font = ExtResource("3_2p2nh")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pp0te")
 text = "[space]"
 label_settings = SubResource("LabelSettings_kyinp")
 vertical_alignment = 2
