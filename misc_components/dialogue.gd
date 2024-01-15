@@ -50,6 +50,7 @@ func shut_up():
 	}
 	cam_tw.position.tween_property(camera_target, "position", Vector2(0, 0), 0.3)
 	cam_tw.zoom.tween_property(camera_target, "zoom", Vector2.ONE, 0.3)
+	visible_characters = -1
 	hide()
 
 func _unhandled_input(event):
