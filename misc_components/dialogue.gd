@@ -1,8 +1,14 @@
 extends RichTextLabel
 
 @onready var dialogue_target: Node = get_parent()
+
+# with the camera logic just for self-documentation :)
 @onready var camera_target: Camera2D = get_viewport().get_camera_2d()
 
+## Times a new character is shown every second.
+@export var updates_per_second: float = 30
+
+## Parses a bbcode input and removes all bbcode tags
 func _bbcode_to_plain(bbcode_input):
 	var regex = RegEx.new()
 	regex.compile("\\[.*?\\]")
@@ -14,8 +20,23 @@ func speak(text_to_speak):
 	visible_characters = 0
 	text = text_to_speak
 	
+	# camera logic
+	camera_target = get_viewport().get_camera_2d()
+	var cam_tw: Dictionary = {
+		"position": get_tree().create_tween(),
+		"zoom": get_tree().create_tween()
+	}
+	
+	cam_tw.position.tween_property(camera_target, "global_position", dialogue_target.global_position, 0.3)
+	cam_tw.zoom.tween_property(camera_target, "zoom", Vector2(2.0, 2.0), 0.3)
+	
 	var text_tw = get_tree().create_tween()
-	text_tw.custom_step(1 / 30)
-	text_tw.tween_property(self, "visible_characters", len(_bbcode_to_plain(text)), len(_bbcode_to_plain(text)) / 30)
+	text_tw.tween_property(self, "visible_characters",
+		len(_bbcode_to_plain(text)),
+		len(_bbcode_to_plain(text)) / updates_per_second
+	)
 	text_tw.finished.connect($Label.show)
-	text_tw.step_finished.connect($AudioStreamPlayer.play)
+	text_tw.finished.connect($Timer.stop)
+	
+	$Timer.wait_time = 1 / updates_per_second
+	$Timer.start()

@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://da5e7jd6lyoxp" path="res://scenes/ui/fonts/theme.tres" id="1_mgjat"]
 [ext_resource type="StyleBox" uid="uid://biir2y06oky6c" path="res://misc_components/ui_resources/panel_bg.tres" id="2_ct7ss"]
 [ext_resource type="Script" path="res://misc_components/dialogue.gd" id="3_7ks1f"]
-[ext_resource type="AudioStream" uid="uid://vw0u5l5wye2k" path="res://sound/sfx/keyboard.mp3" id="4_n5s3j"]
+[ext_resource type="AudioStream" uid="uid://cgcbm7ewt6xbl" path="res://sound/sfx/menu_select.mp3" id="4_laqiv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kyinp"]
 
@@ -33,5 +33,9 @@ label_settings = SubResource("LabelSettings_kyinp")
 vertical_alignment = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_n5s3j")
-volume_db = 24.0
+stream = ExtResource("4_laqiv")
+pitch_scale = 5.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="AudioStreamPlayer" method="play"]
