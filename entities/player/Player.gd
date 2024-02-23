@@ -181,7 +181,7 @@ func a(hi):
 
 func _unhandled_input(event):
 	if event.is_action_pressed("inventory_0"):
-		$Dialogue.speak("Howdy, I'm [b][color=7EE3A0]Dude[/color][/b]! [b][color=7EE3A0]Dude[/color][/b] the dude! Golly, you're new to the [b][color=7EE3A0]underground[/color][/b], aren't you?")
+		$Dialogue.speak("[i][shake][_ala_lupa_anu_pi_ala][/shake][/i]")# Howdy, I'm [b][color=7EE3A0]Dude[/color][/b]! [b][color=7EE3A0]Dude[/color][/b] the dude! Golly, you're new to the [b][color=7EE3A0]underground[/color][/b], aren't you?")
 	if event.is_action_pressed("attack_0") and global.inventory[global.active_id].type == "wood_sword":
 		$SwordSwing.show()
 		$ItemHolding.hide()
