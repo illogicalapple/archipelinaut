@@ -317,3 +317,5 @@ The Kraken does not gain levels, it does not gain abilities, it does not gain bu
 
 The Kraken has no friends, it will attack and destroy whatever happens to get in its way.
 The Kraken has powerful ranged attacks and even more powerful melee attacks.
+
+sussy amongus
